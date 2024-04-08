@@ -1,0 +1,17 @@
+#mainContainer-NavBar {
+    background-color: #F9F0DC;
+    width: 100vw;
+    height: 10rem;
+}
+
+.link-NavBar {
+    color: black;
+}
+
+.link-NavBar:hover {
+    background-color: bisque;
+}
+
+.active-Link-NavBar {
+    color: #75E3AC;
+}
