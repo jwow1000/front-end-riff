@@ -4,7 +4,9 @@ import './PostPreview.css';
 
 function PostPreview() {
   return (
-    <div>PostPreview</div>
+    <div>
+      
+    </div>
   )
 }
 
