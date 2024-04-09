@@ -1,10 +1,10 @@
 #navbar-Layout {
-    z-index: 25;
+    /* z-index: 25; */
 
 }
 
 #body-Layout {
-    z-index: -1;
+    /* z-index: -1; */
     position: relative;
     padding: 6rem 0 0 0 ;
 }
