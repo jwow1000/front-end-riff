@@ -5,13 +5,35 @@
     height: 10rem;
     /* outline: 0.15rem solid #F9F0DC; */
     
-    -webkit-box-shadow:0px 0px 105px 45px rgba(45,255,196,0.9);
-    -moz-box-shadow: 0px 0px 105px 45px rgba(45,255,196,0.9);
+    -webkit-box-shadow:0px 0px 25px 5px rgba(45,255,196,0.9);
+    /* -moz-box-shadow: 0px 0px 25px 5px rgba(45,255,196,0.9); */
     box-shadow: 0px 0px 25px 5px rgba(45,255,196,0.9);
     
     background-position: 50% 50%;
     border-radius: 2rem;
     background-size: cover;
-    
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    overflow: hidden;
+
 }
+
+.sidebarBg-PostPreview {
+    margin: 0 1rem;
+    background-color: rgb(255,255,255, 0.4);
+    padding: 2.5rem 0;
+    width: 5rem;
+    height: 5rem;
+}
+
+#profPic-PostPreview {
+    height: 5rem;
+    width: 5rem;    
+    border-radius: 50%; 
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
 

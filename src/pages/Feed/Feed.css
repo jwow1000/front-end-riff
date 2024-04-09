@@ -1,8 +1,7 @@
 #previewContainer-Feed {
-    padding: 1rem;
+    /* padding: 1rem; */
     width: 100vw;
     display: flex;
-
     flex-flow: column;
     align-items: center;
     justify-content: space-around;
