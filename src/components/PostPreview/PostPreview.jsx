@@ -1,20 +1,27 @@
 // this is the post preview module for the feed page 
+import {useState, useEffect} from 'react';
 
 import './PostPreview.css';
 
 function PostPreview( {post} ) {
-  const imgStyle = {
-    'background-img': `url(${post.image})`
-  }
+  const [profLink, setProfLink] = useState("");
+  
+  useEffect( () => {
+    setProfLink("https://i.ytimg.com/vi/PuTBDeatxSM/maxresdefault.jpg")
+  }, [])
+  
   
   return (
+    
+    
     <div 
       id="mainContainer-PostPreview"
-      style={imgStyle}
+      style={{
+       
+        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${profLink})`
+      }}
     >
-      <div id="profilePicContainer-PostPreview">
-        <img src={post.user.profile_pic} alt="profile pic of you, the user" />  
-      </div>
+      
 
     </div>
   )
