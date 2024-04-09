@@ -23,17 +23,22 @@
 .sidebarBg-PostPreview {
     margin: 0 1rem;
     background-color: rgb(255,255,255, 0.4);
-    padding: 2.5rem 0;
     width: 5rem;
-    height: 5rem;
+    height: 10rem;
 }
 
 #profPic-PostPreview {
+    margin: 2.5rem 0;
     height: 5rem;
     width: 5rem;    
     border-radius: 50%; 
     background-position: 50% 50%;
     background-size: cover;
+}
+
+.likeButton-PostPreview {
+    width: 1px;
+    margin: 10px;
 }
 
 
