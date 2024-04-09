@@ -1,6 +1,17 @@
 #mainContainer-PostPreview {
-    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
-    background-size: cover;
+    /* background-color: #F9F0DC; */
     background-repeat: no-repeat;
+    width: 70vw;
+    height: 10rem;
+    /* outline: 0.15rem solid #F9F0DC; */
+    
+    -webkit-box-shadow:0px 0px 105px 45px rgba(45,255,196,0.9);
+    -moz-box-shadow: 0px 0px 105px 45px rgba(45,255,196,0.9);
+    box-shadow: 0px 0px 25px 5px rgba(45,255,196,0.9);
+    
+    background-position: 50% 50%;
+    border-radius: 2rem;
+    background-size: cover;
+    
 }
 
