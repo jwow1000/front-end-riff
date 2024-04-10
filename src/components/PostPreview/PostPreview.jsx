@@ -1,7 +1,14 @@
 // this is the post preview module for the feed page 
 import {useState, useEffect} from 'react';
-
+import LikeButton from '../LikeButton/LikeButton.jsx';
+import FollowButton from '../FollowButton/FollowButton.jsx';
+import styled from 'styled-components';
 import './PostPreview.css';
+
+const Small = styled.div`
+  width: 1rem;
+`;
+
 
 function PostPreview( {post} ) {
   const [profileImg, setProfileImg] = useState("");
@@ -14,7 +21,7 @@ function PostPreview( {post} ) {
   }, []);
   
   const handleClick = () => {
-    console.log('i;ve been clicked');
+    console.log("i've been clicked");
   }
   
   return (
@@ -35,7 +42,10 @@ function PostPreview( {post} ) {
       </div>
       
       <div className='sidebarBg-PostPreview'>
-
+        <Small>
+          <LikeButton />
+          <FollowButton />
+        </Small>
       </div>
     </div>
   )
