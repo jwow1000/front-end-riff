@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./FollowButton.css";
 
 
-function LikeButton({state}) {
+function LikeButton({state, width}) {
   // define state for like status
   const [like, setLike] = useState(false);
   
@@ -19,10 +19,14 @@ function LikeButton({state}) {
   };
 
   return (
-    <div onClick={handleClick}>
+    <div 
+      onClick={handleClick}
+    >
       <img 
         src={(like) ? likeOn : likeOff} 
-        alt={(like) ? 'the like button is on' : 'the like button is off' } />
+        alt={(like) ? 'the like button is on' : 'the like button is off' } 
+        style={{'width': width}} 
+      /> 
     </div>
   );
 }
