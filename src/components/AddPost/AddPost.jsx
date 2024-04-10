@@ -4,10 +4,21 @@ import "./AddPost.css";
 
 function AddPost() {
   const [modal, setModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const toggleModal = () => {
-    console.log("I have been clicked")
     setModal(!modal);
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedFile(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -23,18 +34,30 @@ function AddPost() {
               <h1>Add Post</h1>
               <form className="add-post-form">
                 <div className="add-file">
-                  <label>Add Photo</label>
-                  <input type="file" placeholder="Add File" />
+                  <label htmlFor="fileInput">Add Photo</label>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    onChange={handleFileChange}
+                    accept="image/*"
+                  />
+                  {selectedFile && (
+                    <img
+                      src={selectedFile}
+                      alt="Selected"
+                      className="preview"
+                    />
+                  )}
                 </div>
                 <div className="add-caption">
                   <label>Add Caption</label>
                   <input type="text" placeholder="Type" />
-                  <input type="submit" placeholder="Post"/>
-                </div>
-              </form>
-              <button className="close-modal" onClick={toggleModal}>
+                  <input type="submit" Value="POST" />
+                  <button className="close-modal" onClick={toggleModal}>
                 CLOSE
               </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
