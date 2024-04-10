@@ -2,20 +2,14 @@
 import {useState, useEffect} from 'react';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
-import styled from 'styled-components';
 import './PostPreview.css';
-
-const Small = styled.div`
-  width: 1rem;
-`;
-
 
 function PostPreview( {post} ) {
   const [profileImg, setProfileImg] = useState("");
   const [postImg, setPostImg] = useState("");
   
   useEffect( () => {
-    setProfileImg("https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg");
+    setProfileImg(post.profile_pic);
     setPostImg("https://i.ytimg.com/vi/PuTBDeatxSM/maxresdefault.jpg");
 
   }, []);
@@ -42,10 +36,8 @@ function PostPreview( {post} ) {
       </div>
       
       <div className='sidebarBg-PostPreview'>
-        <Small>
-          <LikeButton />
-          <FollowButton />
-        </Small>
+          <LikeButton state={false} width={'5rem'} />
+          <FollowButton state={false} width={'5rem'}/>
       </div>
     </div>
   )

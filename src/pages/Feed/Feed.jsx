@@ -11,29 +11,41 @@ function Feed() {
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
-      const postData = await getPosts();
-      setPosts(postData);
-    };
+      console.log('try the fetch')
+      try {
+        const postData = await getPosts();
+        setPosts(postData);
+        console.log('we got the posts my dude');
+      } catch {
+        console.error('nah dude');
+        setPosts([
+          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'},
+          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'},
+          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'}
 
+        ])
+      }
+    
+    }
     fetchPosts();
+    console.log('amount of objects in posts array: ', posts.length);
   }, []);
 
   return (
     <div>
-       <Layout>
+      <Layout>
         <div id="previewContainer-Feed">
           {
-            posts && posts.map((post) => {
+            posts && posts.map((post, idx) => (
+              <PostPreview post={post} key={idx} />
             
-              <PostPreview post={post}/>
-
-            }
-            )
+            ))
+            
             
           }
         
         </div>
-    </Layout>
+      </Layout>
     </div>
   );
 }
