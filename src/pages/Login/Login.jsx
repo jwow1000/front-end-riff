@@ -1,9 +1,10 @@
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './Login.css'; 
+import { Login as loginUser } from "../services/users.js"; // Changed function name to avoid conflict
+import splash from "../assets/splash.svg";
+import "./Login.css"; // Moved import statement to the top
 
-
-
-function Login({ User }) {
+function Login({ setUser }) {
   const navigate = useNavigate();
 
   const [loginForm, setLoginForm] = useState({
@@ -19,61 +20,47 @@ function Login({ User }) {
     setLoginForm((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const loginSubmit = async (e) => {
-    e.preventDefault()
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
     try {
-      const user = await login(loginForm) //need to import login from services
+      const userData = await loginUser(loginForm); // Fixed variable name to match
+      setUser(userData);
 
-      if(user){
-        User(user)
-        // neeed to navigate to the main-feed page
-
-      } else {
-        setLoginForm({
-          ...loginForm,
-          isError: true,
-          errorMsg: "Invalid Credentials",
-          username: "",
-          password: ""
-        })
-      }
+      navigate("/users/login/");
     } catch (error) {
       console.error(error);
-      setLoginForm({
-        ...loginForm,
+      setLoginForm((prevForm) => ({
+        ...prevForm,
         isError: true,
         errorMsg: "Invalid Credentials",
-        username: "",
-        password: "",
-      });
+        password: "", // Clear password field on error
+      }));
     }
-  }
+  };
 
   const formError = () => {
-    const toggleForm = loginForm.isError ? "danger": ""
-    
+    const toggleForm = loginForm.isError ? "danger" : "";
+
     if (loginForm.isError) {
-      return (
-        <button type="submit" className={toggleForm}> {loginForm.errorMsg} </button>
-      )
+      return <button type="submit" className={toggleForm}> {loginForm.errorMsg} </button>;
     } else {
-      return <button type="submit">Log In</button>
+      return <button type="submit">Log In</button>;
     }
-  }
+  };
 
   return (
     <div className="root-Login">
       <div className="root-loginForm-Login">
-        <form onSubmit={loginSubmit} className="loginForm-Login">
+        <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}
           <h1 className="login-text-Login"> Login </h1>
           <p className="username-text-Login"> Enter Username </p>
           <input
-            type='text'
-            name='username'
+            type="text"
+            name="username"
             value={loginForm.username}
             onChange={handleChange}
             required
@@ -81,8 +68,8 @@ function Login({ User }) {
           />
           <p className="password-text-Login"> Enter Password </p>
           <input
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             value={loginForm.password}
             onChange={handleChange}
             required
@@ -97,7 +84,7 @@ function Login({ User }) {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

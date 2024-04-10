@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Register.css';
+import { signUp } from "../services/users.js";
 
 
 
@@ -48,9 +49,9 @@ function Register({User}) {
       const userData = await signUp(registerForm); //this needs to be brought in from services
       User(userData)
       
-      // navigate("") need to navigate to the main feed!
+    navigate("/users/register")   // navigate("") need to navigate to the main feed!
     } catch (error) {
-      // need to atuthenticate the username to ensure its unique.
+      console.error(error);           // need to atuthenticate the username to ensure its unique.
       let errorMessage = "Username already exist"
       setRegisterForm(prev => ({
         ...prev,
