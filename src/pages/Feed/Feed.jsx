@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout.jsx";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import { getPosts } from "../../services/posts.js";
+import {randomInt} from "../../services/helpers.js";
 import "./Feed.css";
 
 function Feed() {
@@ -37,7 +38,14 @@ function Feed() {
         <div id="previewContainer-Feed">
           {
             posts && posts.map((post, idx) => (
-              <PostPreview post={post} key={idx} />
+              <PostPreview 
+                post={post} 
+                key={idx}
+                width={`80vw`}
+                height={`10rem`}
+                // width={`${randomInt(20,70)}vw`}
+                // height={`${randomInt(3,10)}rem`}
+              />
             
             ))
             

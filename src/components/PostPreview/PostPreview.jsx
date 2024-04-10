@@ -4,7 +4,7 @@ import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
 import './PostPreview.css';
 
-function PostPreview( {post} ) {
+function PostPreview( {post, width, height} ) {
   const [profileImg, setProfileImg] = useState("");
   const [postImg, setPostImg] = useState("");
   
@@ -22,6 +22,8 @@ function PostPreview( {post} ) {
     <div 
       id="mainContainer-PostPreview"
       style={{
+        'width': width,
+        'height': height,
         'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postImg})`
       }}
       onClick={handleClick}
@@ -32,7 +34,7 @@ function PostPreview( {post} ) {
             style={{'backgroundImage': `url(${profileImg})`}}
             alt="your profile pic"
           > 
-        </div>       
+        </div>
       </div>
       
       <div className='sidebarBg-PostPreview'>
