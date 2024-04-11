@@ -1,65 +1,67 @@
 // this will hold the navbar
-import { NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import './NavBar.css';
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { signOut } from "../../services/users";
+import "./NavBar.css";
 
+function NavBar({ user, setUser }) {
+  // navigate function
+  const navigate = useNavigate();
 
-function NavBar({user}) {
   const [profLink, setProfLink] = useState("");
-  
-  useEffect( () => {
-    setProfLink("https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg")
-  }, [])
-  
-  
 
-  
+  // this is sign out function
+  const handleSignOut = async () => {
+    await signOut();
+    setUser(null);
+    navigate("/login");
+  };
+
+  // get user data
+  useEffect(() => {
+    setProfLink(
+      "https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg"
+    );
+  }, []);
+
   return (
     <div id="mainContainer-NavBar">
-      <NavLink 
+      <NavLink
         id="userProf-NavBar"
-        className={({ isActive }) => (isActive ? 'link-NavBar active-Link-NavBar' : 'link-NavBar' )}        
+        className={({ isActive }) =>
+          isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
+        }
         to="/user"
       >
-        <div 
+        <div
           id="profPic-container-NavBar"
-          style={{'backgroundImage': `url(${profLink})`}}
+          style={{ backgroundImage: `url(${profLink})` }}
           alt="your profile pic"
-        > 
-        </div>
-        
+        ></div>
       </NavLink>
       <div id="linkContainer-NavBar">
-
-        <NavLink 
-          className={({ isActive }) => (isActive ? 'link-NavBar active-Link-NavBar' : 'link-NavBar' )}
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
+          }
           to="/main-feed"
         >
-          Main 
+          Main
         </NavLink>
-        
-        <NavLink 
-          className={({ isActive }) => (isActive ? 'link-NavBar active-Link-NavBar' : 'link-NavBar' )}
+
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
+          }
           to="/user-feed"
         >
           Main Fav
         </NavLink>
 
-        <NavLink 
-          className={({ isActive }) => (isActive ? 'link-NavBar active-Link-NavBar' : 'link-NavBar' )}
-          to="/user-feed"
-        >
-          {
-            ('is user logged in?') ?
-              'Sign Out' :
-              'Sign In'
-          }
-        </NavLink>
+        <div onClick={handleSignOut} className="link-NavBar">Sign Out</div>
       </div>
-
-      
     </div>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

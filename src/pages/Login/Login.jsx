@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Login as loginUser } from "../services/users.js"; // Changed function name to avoid conflict
-import splash from "../assets/splash.svg";
+// Changed function name to avoid conflict
+import { Login as loginUser } from "../../services/users.js"; 
 import "./Login.css"; // Moved import statement to the top
 
 function Login({ setUser }) {
@@ -29,8 +29,7 @@ function Login({ setUser }) {
     try {
       const userData = await loginUser(loginForm); // Fixed variable name to match
       setUser(userData);
-
-      navigate("/users/login/");
+      navigate("/");
     } catch (error) {
       console.error(error);
       setLoginForm((prevForm) => ({
