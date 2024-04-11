@@ -1,8 +1,8 @@
 // this is the register page
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
-import { signUp } from "../services/users.js";
+import { signUp } from './services/user.js';
 
 
 
