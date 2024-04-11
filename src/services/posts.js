@@ -31,4 +31,15 @@ export const getPostComments = async (id) => {
     }
 };
 
+// still devvvving thissss
+// // get a post with id
+// export const getFavPosts = async (id) => {
+//     try {
+//       const response = await api.get(`/posts/${id}/comments`);
+//       return response.data;
+//     } catch (error) {
+//       throw error;
+//     }
+// };
+
 

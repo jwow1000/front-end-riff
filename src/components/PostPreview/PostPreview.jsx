@@ -1,18 +1,33 @@
 // this is the post preview module for the feed page 
 import {useState, useEffect} from 'react';
+import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
 import './PostPreview.css';
 
 function PostPreview( {post, width, height} ) {
-  const [profileImg, setProfileImg] = useState("");
-  const [postImg, setPostImg] = useState("");
-  
-  useEffect( () => {
-    setProfileImg(post.profile_pic);
-    setPostImg("https://i.ytimg.com/vi/PuTBDeatxSM/maxresdefault.jpg");
+  const [postData, setPostData] = useState({});
+  const [postUser, setPostUser] = useState({});
 
-  }, []);
+  // get post data
+  useEffect(() => {
+    // function to get post object
+    const getPostData = async () => {
+      const posti = await post;
+      setPostData( posti );
+      console.log('postData', postData);
+    }
+    // function to get user by post
+    const getUserData = async () => {
+      const userData = await getProfile(postData.author);
+      setPostUser(userData);
+    }
+    
+    getPostData();  
+    getUserData();
+  }, [post]);
+
+  console.log('post data', postData);
   
   const handleClick = () => {
     console.log("i've been clicked");
@@ -24,14 +39,14 @@ function PostPreview( {post, width, height} ) {
       style={{
         'width': width,
         'height': height,
-        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postImg})`
+        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
       }}
       onClick={handleClick}
     >
       <div className='sidebarBg-PostPreview'>
         <div 
             id="profPic-PostPreview"
-            style={{'backgroundImage': `url(${profileImg})`}}
+            style={{'backgroundImage': `url(${postUser.image})`}}
             alt="your profile pic"
           > 
         </div>
