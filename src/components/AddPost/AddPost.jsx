@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./AddPost.css";
 
-function AddPost() {
+function AddPost({user}) {
   const [modal, setModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
