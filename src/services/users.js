@@ -44,9 +44,10 @@ export const verifyUser = async () => {
   return false;
 };
 
+//get profile by user id
 export const getProfile = async (id) => {
   try {
-    const response = await api.get(`/users/${id}`);
+    const response = await api.get(`/users/${id}/`);
     return response.data;
   } catch (error) {
     throw error;
