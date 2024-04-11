@@ -9,26 +9,22 @@ function PostPreview( {post, width, height} ) {
   const [postData, setPostData] = useState({});
   const [postUser, setPostUser] = useState({});
 
-  // get post data
+  // get post data and user data nested
   useEffect(() => {
     // function to get post object
+    const getUserData = async (id) => {
+      const data = await getProfile(id);
+      setPostUser(data);
+    }
     const getPostData = async () => {
       const posti = await post;
       setPostData( posti );
-      console.log('postData', postData);
-    }
-    // function to get user by post
-    const getUserData = async () => {
-      const userData = await getProfile(postData.author);
-      setPostUser(userData);
+      getUserData( posti.author );
     }
     
     getPostData();  
-    getUserData();
   }, [post]);
 
-  console.log('post data', postData);
-  
   const handleClick = () => {
     console.log("i've been clicked");
   }
@@ -46,7 +42,7 @@ function PostPreview( {post, width, height} ) {
       <div className='sidebarBg-PostPreview'>
         <div 
             id="profPic-PostPreview"
-            style={{'backgroundImage': `url(${postUser.image})`}}
+            style={{'backgroundImage': `url(${postUser.profilePic})`}}
             alt="your profile pic"
           > 
         </div>

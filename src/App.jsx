@@ -15,7 +15,14 @@ function App() {
   const { pathname } = location;
   
   // define user state to pass down and verify
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
+  // function to hiode layout
+  const hideLayout = (path) => {
+    if(path !== '/login/' && path !== '/register') {
+      return <Layout user={user} setUser={setUser} />
+
+    } 
+  }
 
   // fetch the user on mount
   useEffect(() => {
@@ -23,7 +30,10 @@ function App() {
       const user = await verifyUser();
       if (user) {
         const temp = getProfile(user.id);
-        setUser(temp);
+        setUser({
+          'user_obj': user,
+          'profile_obj': temp
+        });
         console.log('we got a user');
       } else {
         setUser(null);
@@ -33,20 +43,17 @@ function App() {
 
     fetchUser();
   }, []);
-
+  console.log('check it out', user)
   return (
     <div>
       {
-        (pathname === '/login/' || pathname === '/register/') ?
-          null
-        :
-        <Layout user={user} setUser={setUser} />
+        hideLayout(pathname)
       }
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         
-        <Route path="/main-feed" element={<Feed user={user} feedType={'main'} />} />
+        <Route path="/" element={<Feed user={user} feedType={'main'} />} />
         <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
 d      </Routes>
     </div>
