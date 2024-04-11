@@ -1,23 +1,56 @@
 // this will hold the add post module
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { createPost } from "../../services/posts.js";
 import "./AddPost.css";
 
-function AddPost() {
+function AddPost({ user }) {
+
+  //modal
+
   const [modal, setModal] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setSelectedFile(reader.result);
-      };
-      reader.readAsDataURL(file);
+  const [post, setPost] = useState({
+    title: "",
+    text_body: "",
+    parent: null,
+    image: "",
+  });
+
+  const [errors, setErrors] = useState({
+    title: "",
+    text_body: "",
+    parent: null,
+    image: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === 'image') {
+      setPost((prevPost) => ({
+        ...prevPost,
+        [name]: files[0]
+      }));
+    } else {
+      setPost((prevPost) => ({
+        ...prevPost,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await createPost(post);
+    if (response.status === 400) {
+      setErrors(response.data);
     }
   };
 
@@ -32,32 +65,72 @@ function AddPost() {
           <div className="modal">
             <div className="modal-content">
               <h1>Add Post</h1>
-              <form className="add-post-form">
-                <div className="add-file">
-                  <label htmlFor="fileInput">Add Photo</label>
-                  <input
-                    type="file"
-                    id="fileInput"
-                    onChange={handleFileChange}
-                    accept="image/*"
-                  />
-                  {selectedFile && (
-                    <img
-                      src={selectedFile}
-                      alt="Selected"
-                      className="preview"
+              <Form className="add-post-form" encType="multipart/form-data" onSubmit={handleSubmit}>
+                <Row>
+                  <Form.Group className="mb-3" constrolId="titleInput">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="title"
+                      value={post.title}
+                      isInvalid={errors.title}
+                      onChange={handleChange}
                     />
+                    {errors.title && (
+                      <Form.Text className="alert-danger" tooltip>
+                        {errors.title}
+                      </Form.Text>
+                    )}
+                  </Form.Group>
+                </Row>
+
+                <Row>
+                  <Form.Group className="mb-3" constrolId="formFile">
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control
+                      type="file"
+                      name="image"
+                      accept="image/jpeg,image/png"
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    {errors.image && (
+                      <Form.Text className="alert-danger" tooltip>
+                        {errors.image}
+                      </Form.Text>
+                    )}
+                  </Form.Group>
+                </Row>
+
+                <Form.Group className="mb-3" constrolId="textBodyInput">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={5}
+                    name="text_body"
+                    value={post.text_body}
+                    isInvalid={errors.text_body}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                  />
+                  {errors.text_body && (
+                    <Form.Text className="alert-danger" tooltip>
+                      {errors.text_body}
+                    </Form.Text>
                   )}
-                </div>
-                <div className="add-caption">
-                  <label>Add Caption</label>
-                  <input type="text" placeholder="Type" />
-                  <input type="submit" Value="POST" />
-                  <button className="close-modal" onClick={toggleModal}>
-                CLOSE
-              </button>
-                </div>
-              </form>
+                </Form.Group>
+                <Button
+                  variant="primary"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+                <button className="close-modal" onClick={toggleModal}>
+                  CLOSE
+                </button>
+              </Form>
             </div>
           </div>
         </div>
@@ -67,3 +140,4 @@ function AddPost() {
 }
 
 export default AddPost;
+

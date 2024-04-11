@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { verifyUser } from "./services/users.js";
+import { verifyUser, getProfile} from "./services/users.js";
 import Feed from "./pages/Feed/Feed.jsx";
 import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
+import AddPost from "./components/AddPost/AddPost.jsx"
 import "./App.css";
 
 function App() {
@@ -18,7 +19,11 @@ function App() {
     const fetchUser = async () => {
       const user = await verifyUser();
       if (user) {
-        setUser(user);
+        const temp = getProfile(user.id);
+        setUser({
+          'user_obj': user,
+          'profile_obj': temp
+        });
         console.log('we got a user');
       } else {
         setUser(null);
@@ -29,15 +34,20 @@ function App() {
     fetchUser();
   }, []);
 
+
+
+  console.log(user)
+
+
   return (
     <div>
       <Layout user={user} setUser={setUser} />
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
-        
+        <Route path="/addpost" element={<AddPost user={user}/>}/>
         <Route path="/" element={<Feed />} />
-d      </Routes>
+      </Routes>
     </div>
   );
 }
