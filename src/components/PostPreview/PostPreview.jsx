@@ -1,11 +1,14 @@
 // this is the post preview module for the feed page 
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
 import './PostPreview.css';
 
 function PostPreview( {post, width, height} ) {
+  const navigate = useNavigate();
+
   const [postData, setPostData] = useState({});
   const [postUser, setPostUser] = useState({});
 
@@ -26,31 +29,39 @@ function PostPreview( {post, width, height} ) {
   }, [post]);
 
   const handleClick = () => {
-    console.log("i've been clicked");
+    navigate(`thread/${postData.id}`);
   }
   
   return (
-    <div 
-      id="mainContainer-PostPreview"
-      style={{
-        'width': width,
-        'height': height,
-        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
-      }}
-      onClick={handleClick}
-    >
-      <div className='sidebarBg-PostPreview'>
-        <div 
-            id="profPic-PostPreview"
-            style={{'backgroundImage': `url(${postUser.profilePic})`}}
-            alt="your profile pic"
-          > 
+    <div id="background-PostPreview">
+      <div 
+        id="mainContainer-PostPreview"
+        style={{
+          'width': width,
+          'height': height,
+          'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
+        }}
+        >
+        
+        <div className='sidebarBg-PostPreview'>
+          <div 
+              id="profPic-PostPreview"
+              style={{'backgroundImage': `url(${postUser.profilePic})`}}
+              alt="your profile pic"
+            > 
+          </div>
+          <FollowButton state={false} width={'5rem'}/>
+        </div>
+        
+        <div className='sidebarBg-PostPreview'>
+          <LikeButton state={false} width={'5rem'} />
         </div>
       </div>
-      
-      <div className='sidebarBg-PostPreview'>
-          <LikeButton state={false} width={'5rem'} />
-          <FollowButton state={false} width={'5rem'}/>
+      <div
+        id="centerClick-PostPreview"
+        onClick={handleClick}
+      >
+        poop
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ import { verifyUser, getProfile } from "./services/users.js";
 import Feed from "./pages/Feed/Feed.jsx";
 import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
+import Thread from "./pages/Thread/Thread.jsx";
 import Register from "./pages/Register/Register.jsx";
 import "./App.css";
 
@@ -55,6 +56,7 @@ function App() {
         
         <Route path="/" element={<Feed user={user} feedType={'main'} />} />
         <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
+        <Route path="/thread/:id" element={<Thread user={user} />} />
 d      </Routes>
     </div>
   );
