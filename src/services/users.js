@@ -7,6 +7,7 @@ export const signUp = async (credentials) => {
     localStorage.setItem("token", resp.data.access);
     return resp.data.user;
   } catch (error) {
+    console.log('sign up failed');
     throw error;
   }
 };
@@ -35,7 +36,10 @@ export const verifyUser = async () => {
   if (token) {
     const resp = await api.get("/users/token/refresh/");
     localStorage.setItem("token", resp.data.access);
+    console.log('VERIFIED')
     return resp.data.user;
+  } else {
+    console.log('NOT VERIFIED')
   }
   return false;
 };
