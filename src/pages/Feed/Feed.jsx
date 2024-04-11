@@ -31,11 +31,11 @@ function Feed({user, feedType}) {
     fetchPosts();
     console.log('amount of objects in posts array: ', posts);
   }, []);
-
+  
   return (
     <div>
       <div id="previewContainer-Feed">
-        <AddPost />
+        <AddPost user={user} />
         {
           posts && posts.map((post, idx) => (
             <PostPreview 

@@ -13,7 +13,7 @@ function NavBar({ user, setUser }) {
   // get user data
   useEffect(() => {
     const getUserData = async () => {
-      const usr = await user;
+      const usr = await user.profile_obj;
       setProfLink(
         usr.profilePic
       );
