@@ -45,12 +45,13 @@ function NavBar({ user, setUser }) {
           alt="your profile pic"
         ></div>
       </NavLink>
+      
       <div id="linkContainer-NavBar">
         <NavLink
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/main-feed"
+          to="/home/main-feed"
         >
           Main
         </NavLink>
@@ -59,7 +60,7 @@ function NavBar({ user, setUser }) {
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/user-feed"
+          to="/home/fav-feed"
         >
           Main Fav
         </NavLink>

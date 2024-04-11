@@ -46,7 +46,8 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         
-        <Route path="/" element={<Feed />} />
+        <Route path="/main-feed" element={<Feed user={user} feedType={'main'} />} />
+        <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
 d      </Routes>
     </div>
   );
