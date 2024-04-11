@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { verifyUser } from "./services/users.js";
 import Feed from "./pages/Feed/Feed.jsx";
 import Layout from "./components/Layout/Layout.jsx";
@@ -9,7 +9,11 @@ import "./App.css";
 
 function App() {
   const navigate = useNavigate();
-
+  
+  // get current path location to render navbar(layout) or not
+  const location = useLocation();
+  const { pathname } = location;
+  
   // define user state to pass down and verify
   const [user, setUser] = useState(null);
 
@@ -31,7 +35,12 @@ function App() {
 
   return (
     <div>
-      <Layout user={user} setUser={setUser} />
+      {
+        (pathname === '/login/' || pathname === '/register/') ?
+          null
+        :
+        <Layout user={user} setUser={setUser} />
+      }
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
