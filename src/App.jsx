@@ -19,6 +19,7 @@ function App() {
       const user = await verifyUser();
       if (user) {
         setUser(user);
+        console.log('we got a user');
       } else {
         setUser(null);
         navigate("login/");
@@ -30,12 +31,13 @@ function App() {
 
   return (
     <div>
-      <Layout user={user} />
+      <Layout user={user} setUser={setUser} />
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
+        
         <Route path="/" element={<Feed />} />
-      </Routes>
+d      </Routes>
     </div>
   );
 }

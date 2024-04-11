@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signUp } from "../../services/users.js";
 import "./Register.css";
 
-function Register({ User }) {
+function Register({ setUser }) {
   const navigate = useNavigate();
 
   const [registerForm, setRegisterForm] = useState({
@@ -14,7 +14,7 @@ function Register({ User }) {
     passwordConfirmation: "",
     first_name: "",
     last_name: "",
-    profile_pic: "",
+    profilePic: "",
     isError: false,
     errorMsg: "",
   });
@@ -36,22 +36,22 @@ function Register({ User }) {
         isError: true,
         errorMsg: "Password and password confirmation do not match.",
       });
-      // return;
-    }
+    } 
 
-    try {
-      const userData = await signUp(registerForm); 
-      User(userData);
-      navigate("/"); 
-    } catch (error) {
-      console.error(error); // need to atuthenticate the username to ensure its unique.
-      let errorMessage = "Username already exists";
-      setRegisterForm((prev) => ({
-        ...prev,
-        isError: true,
-        errorMsg: errorMessage,
-      }));
-    }
+      try {
+        const userData = await signUp(registerForm); 
+        setUser(userData);
+        console.log('user name has been set')
+        navigate("/"); 
+      } catch (error) {
+        console.error(error); // need to atuthenticate the username to ensure its unique.
+        let errorMessage = "failed to set user with user data";
+        setRegisterForm((prev) => ({
+          ...prev,
+          isError: true,
+          errorMsg: errorMessage,
+        }));
+      }
   };
 
   const renderRegisterError = () => {
@@ -76,7 +76,7 @@ function Register({ User }) {
     passwordConfirmation,
     first_name,
     last_name,
-    profile_pic,
+    profilePic,
   } = registerForm;
 
   return (
@@ -165,8 +165,8 @@ function Register({ User }) {
             </p>
             <input
               type="text"
-              name="profile_pic"
-              value={profile_pic}
+              name="profilePic"
+              value={profilePic}
               onChange={registerHandleChange}
               required
               autoComplete="off"

@@ -29,8 +29,7 @@ function Login({ setUser }) {
     try {
       const userData = await loginUser(loginForm); // Fixed variable name to match
       setUser(userData);
-
-      navigate("/users/login/");
+      navigate("/");
     } catch (error) {
       console.error(error);
       setLoginForm((prevForm) => ({
