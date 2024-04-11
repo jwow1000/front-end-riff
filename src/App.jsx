@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
-import { verifyUser } from "./services/users.js";
+import { verifyUser, getProfile } from "./services/users.js";
 import Feed from "./pages/Feed/Feed.jsx";
 import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
@@ -15,14 +15,15 @@ function App() {
   const { pathname } = location;
   
   // define user state to pass down and verify
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   // fetch the user on mount
   useEffect(() => {
     const fetchUser = async () => {
       const user = await verifyUser();
       if (user) {
-        setUser(user);
+        const temp = getProfile(user.id);
+        setUser(temp);
         console.log('we got a user');
       } else {
         setUser(null);

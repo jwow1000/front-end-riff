@@ -9,6 +9,18 @@ function NavBar({ user, setUser }) {
   const navigate = useNavigate();
 
   const [profLink, setProfLink] = useState("");
+  
+  // get user data
+  useEffect(() => {
+    const getUserData = async () => {
+      const usr = await user;
+      setProfLink(
+        usr.profilePic
+      );
+
+    }
+    getUserData();  
+  }, [user]);
 
   // this is sign out function
   const handleSignOut = async () => {
@@ -17,12 +29,6 @@ function NavBar({ user, setUser }) {
     navigate("/login");
   };
 
-  // get user data
-  useEffect(() => {
-    setProfLink(
-      "https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg"
-    );
-  }, []);
 
   return (
     <div id="mainContainer-NavBar">

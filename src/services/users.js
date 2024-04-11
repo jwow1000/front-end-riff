@@ -43,3 +43,12 @@ export const verifyUser = async () => {
   }
   return false;
 };
+
+export const getProfile = async (id) => {
+  try {
+    const response = await api.get(`/users/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
