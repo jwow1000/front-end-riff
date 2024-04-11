@@ -7,6 +7,7 @@ import './NavBar.css';
 function NavBar({user}) {
   const [profLink, setProfLink] = useState("");
   
+  // get user data
   useEffect( () => {
     setProfLink("https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg")
   }, [])

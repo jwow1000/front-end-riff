@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Login as loginUser } from "../services/users.js"; // Changed function name to avoid conflict
-import splash from "../assets/splash.svg";
+// Changed function name to avoid conflict
+import { Login as loginUser } from "../../services/users.js"; 
 import "./Login.css"; // Moved import statement to the top
 
 function Login({ setUser }) {
