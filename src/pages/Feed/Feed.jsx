@@ -1,39 +1,41 @@
 // this is the main feed
 import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
+import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts } from "../../services/posts.js";
-import {randomInt} from "../../services/helpers.js";
 import "./Feed.css";
 
-function Feed() {
+function Feed({user, feedType}) {
   const [posts, setPosts] = useState([]);
   
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
-      console.log('try the fetch')
+      let postsData = false;
       try {
-        const postData = await getPosts();
-        setPosts(postData);
-        console.log('we got the posts my dude');
-      } catch {
-        console.error('nah dude');
-        setPosts([
-          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'},
-          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'},
-          {'profile_pic': 'https://www.pngall.com/wp-content/uploads/9/SpongeBob-SquarePants-PNG-HD-Image.png'}
+        if(feedType === 'main') {
+          postsData = await getPosts();
+        } else {
+          //const postsData = await getPosts
+        }
 
-        ])
+        console.log('we got the posts my dude', postsData);
+        setPosts(postsData);
+        
+      } catch {
+        console.error('no posts', error);
+        
       }
     
     }
     fetchPosts();
-    console.log('amount of objects in posts array: ', posts.length);
+    console.log('amount of objects in posts array: ', posts);
   }, []);
-
+  
   return (
     <div>
       <div id="previewContainer-Feed">
+        <AddPost user={user} />
         {
           posts && posts.map((post, idx) => (
             <PostPreview 

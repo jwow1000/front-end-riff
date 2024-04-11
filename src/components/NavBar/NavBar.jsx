@@ -9,6 +9,18 @@ function NavBar({ user, setUser }) {
   const navigate = useNavigate();
 
   const [profLink, setProfLink] = useState("");
+  
+  // get user data
+  useEffect(() => {
+    const getUserData = async () => {
+      const usr = await user.profile_obj;
+      setProfLink(
+        usr.profilePic
+      );
+
+    }
+    getUserData();  
+  }, [user]);
 
   // this is sign out function
   const handleSignOut = async () => {
@@ -17,12 +29,6 @@ function NavBar({ user, setUser }) {
     navigate("/login");
   };
 
-  // get user data
-  useEffect(() => {
-    setProfLink(
-      "https://www.hdwallpaper.nu/wp-content/uploads/2015/11/Spongebob_Squarepants_wallpaper_017.jpg"
-    );
-  }, []);
 
   return (
     <div id="mainContainer-NavBar">
@@ -39,12 +45,13 @@ function NavBar({ user, setUser }) {
           alt="your profile pic"
         ></div>
       </NavLink>
+      
       <div id="linkContainer-NavBar">
         <NavLink
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/main-feed"
+          to="/home/main-feed"
         >
           Main
         </NavLink>
@@ -53,7 +60,7 @@ function NavBar({ user, setUser }) {
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/user-feed"
+          to="/home/fav-feed"
         >
           Main Fav
         </NavLink>
