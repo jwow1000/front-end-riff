@@ -18,7 +18,8 @@ function App() {
   
   // define user state to pass down and verify
   const [user, setUser] = useState([]);
-  // function to hiode layout
+  
+  // function to hide layout
   const hideLayout = (path) => {
     if(path !== '/login/' && path !== '/register') {
       return <Layout user={user} setUser={setUser} />
@@ -45,7 +46,8 @@ function App() {
 
     fetchUser();
   }, []);
-  console.log('check it out', user)
+  // console.log('check it out', user)
+  
   return (
     <div>
       {
@@ -58,8 +60,9 @@ function App() {
         <Route path="/" element={<Feed user={user} feedType={'main'} />} />
         <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
         <Route path="/thread/:id" element={<Thread user={user} />} />
-d      </Routes>
+      </Routes>
     </div>
   );
 }
+
 export default App;

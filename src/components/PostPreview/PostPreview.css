@@ -44,7 +44,7 @@
     background-color: rgb(255,255,255, 0.4);
     width: 5rem;
     height: 10rem;
-    z-index: 100;
+    z-index: 2;
 
 }
 
@@ -55,14 +55,14 @@
     border-radius: 50%; 
     background-position: 50% 50%;
     background-size: cover;
-    z-index: 100;
+    z-index: 2;
 
 }
 
 .likeButton-PostPreview {
     width: 1px;
     margin: 10px;
-    z-index: 100;
+    z-index: 2;
 
 }
 
