@@ -33,15 +33,20 @@ function PostPreview( {post, width, height} ) {
   }
   
   return (
-    <div id="background-PostPreview">
-      <div 
-        id="mainContainer-PostPreview"
-        style={{
-          'width': width,
-          'height': height,
-          'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
-        }}
-        >
+    <div 
+      id="background-PostPreview"
+      style={{
+        'width': width,
+        'height': height,
+        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
+      }}
+    >
+      <div
+        id="centerClick-PostPreview"
+        onClick={handleClick}
+      >
+      </div>
+      <div id="mainContainer-PostPreview">
         
         <div className='sidebarBg-PostPreview'>
           <div 
@@ -59,12 +64,7 @@ function PostPreview( {post, width, height} ) {
           <LikeButton state={false} width={'5rem'} />
         </div>
       </div>
-      <div
-        id="centerClick-PostPreview"
-        onClick={handleClick}
-      >
-        poop
-      </div>
+      
     </div>
   )
 }
