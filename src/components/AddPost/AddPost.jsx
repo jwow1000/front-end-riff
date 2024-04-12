@@ -15,6 +15,7 @@ function AddPost({ user }) {
 
   const toggleModal = () => {
     setModal(!modal);
+
   };
 
   const [post, setPost] = useState({
@@ -52,6 +53,8 @@ function AddPost({ user }) {
     if (response.status === 400) {
       setErrors(response.data);
     }
+    toggleModal();
+    location.reload();
   };
 
   return (
