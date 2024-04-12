@@ -27,7 +27,10 @@ function PostPreview( {post, width, height} ) {
     
     getPostData();  
   }, [post]);
+  // check for follows
+  
 
+  // handle the body click
   const handleClick = () => {
     navigate(`thread/${postData.id}`);
   }

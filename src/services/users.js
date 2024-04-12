@@ -53,3 +53,14 @@ export const getProfile = async (id) => {
     throw error;
   }
 }
+
+// get all posts by user with id
+// path('profile/<int:id>/posts/', UserPosts.as_view(), name='userPosts'),
+export const getUserPostsById = async (id) => {
+  try {
+    const response = await api.get(`profile/${id}/posts`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

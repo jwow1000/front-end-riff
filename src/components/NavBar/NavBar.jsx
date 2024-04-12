@@ -37,7 +37,7 @@ function NavBar({ user, setUser }) {
         className={({ isActive }) =>
           isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
         }
-        to={`/user/${user.id}`}
+        to={`/my-feed/`}
       >
         <div
           id="profPic-container-NavBar"
