@@ -48,8 +48,10 @@ function PostPreview( {post, width, height} ) {
               id="profPic-PostPreview"
               style={{'backgroundImage': `url(${postUser.profilePic})`}}
               alt="your profile pic"
+              
             > 
           </div>
+          
           <FollowButton state={false} width={'5rem'}/>
         </div>
         
