@@ -6,34 +6,49 @@ import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
 import './PostPreview.css';
 
-function PostPreview( {post, width, height} ) {
+function PostPreview( {post, width, height, user} ) {
   const navigate = useNavigate();
 
   const [postData, setPostData] = useState({});
   const [postUser, setPostUser] = useState({});
 
+  const doILikeThis = () => {
+    // map through likes
+    for(let i=0; i<postData.likes; i++) {
+      if(user.id === postData[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const doIFollowThisUser = () => {
+    
+  }
+
   // get post data and user data nested
   useEffect(() => {
-    // function to get post object
     const getUserData = async (id) => {
-      const data = await getProfile(id);
-      console.log('is get user data getting called?')
-      console.log('does getting profile data work?', data)
-      setPostUser(data);
-      
-    }
-    // get Post data and call user data
-    const getPostData = async () => {
-      const posti = await post;
-      setPostData( posti );
-      getUserData( posti.author );
+      console.log('the author id', id);
+      const tempData = await getProfile(id);
+      console.log('am i triggered?')
+      setPostUser(tempData);
     }
     
-    getPostData();  
+    const getPostAndUser = async () => {
+      // wait for the post data to arrive
+      const tempPost = await post;
+      console.log('ugh',tempPost);
+      setPostData(tempPost);
+      getUserData(tempPost.author + 1); 
+    }
+
+    getPostAndUser();
+    
   }, [post]);
   // check for follows
-  console.log('do we have the data', )
-
+  
+  console.log('what is going on with these objects',postData, postUser);
   // handle the body click
   const handleClick = () => {
     navigate(`thread/${postData.id}`);
@@ -70,7 +85,12 @@ function PostPreview( {post, width, height} ) {
         </div>
         
         <div className='sidebarBg-PostPreview'>
-          <LikeButton state={false} width={'5rem'} />
+          <LikeButton
+            userId={user.id}
+            postId={postData.id} 
+            state={doILikeThis} 
+            width={'5rem'} 
+          />
         </div>
       </div>
       
@@ -78,4 +98,4 @@ function PostPreview( {post, width, height} ) {
   )
 }
 
-export default PostPreview  
+export default PostPreview    

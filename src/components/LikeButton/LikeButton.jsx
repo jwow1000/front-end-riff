@@ -1,10 +1,11 @@
 import likeOn from "../../assets/like-on.png";
 import likeOff from "../../assets/like-off.png";
+import { removeLike, addLike } from "../../services/users";
 import { useEffect, useState } from "react";
 import "./LikeButton.css";
 
 
-function LikeButton({state, width}) {
+function LikeButton({state, width, postId, userId}) {
   // define state for like status
   const [like, setLike] = useState(false);
   
@@ -12,10 +13,17 @@ function LikeButton({state, width}) {
   useEffect( () => {
     setLike(state);
   }, []);
+  // async axios add like
   
   // toggle like on click
   const handleClick = () => {
-    setLike(!like);
+    if(like) {
+      removeLike(postId, userId);
+      setLike(false);
+    } else {
+      addLike(postId, userId);
+      setLike(true);
+    }
   };
 
   return (

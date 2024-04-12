@@ -38,6 +38,18 @@ export const getPost = async (id) => {
   }
 };
 
+export const getPostWithUser = async (id) => {
+  try {
+    const response = await api.get(`/posts/${id}/`);
+    const res2 = await api.get(`/profile/${response.author}`);
+    return [response.data, res2.data];
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+
 // get a post comments with id
 export const getPostComments = async (id) => {
   try {

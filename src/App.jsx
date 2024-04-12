@@ -64,7 +64,6 @@ function App() {
             <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
             <Route path="/thread/:id" element={<Thread user={user} />} />
             <Route path="/profile" element={<Profile user={user}/>} />
-            <Route path="/profile" element={<Feed user={user} feedType={'user'} />} />
           </>
           )
         }
