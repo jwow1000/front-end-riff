@@ -40,7 +40,7 @@ function PostPreview( {post, width, height} ) {
       id="background-PostPreview"
       style={{
         'width': width,
-        'height': height,
+        // 'height': height,
         'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
       }}
     >
@@ -52,7 +52,7 @@ function PostPreview( {post, width, height} ) {
       <div id="mainContainer-PostPreview">
         
         <div className='sidebarBg-PostPreview'>
-          <NavLink to={`/user/${postUser.id}`}>
+          <NavLink to={`/profile`}>
             <div 
               id="profPic-PostPreview"
               style={{'backgroundImage': `url(${postUser.profilePic})`}}

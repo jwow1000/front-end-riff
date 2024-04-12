@@ -2,7 +2,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { signOut } from "../../services/users";
-import "./NavBar.css";
+// import "./NavBar.css";
 
 function NavBar({ user, setUser }) {
   // navigate function
