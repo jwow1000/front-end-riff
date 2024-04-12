@@ -37,7 +37,7 @@ function NavBar({ user, setUser }) {
         className={({ isActive }) =>
           isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
         }
-        to="/user"
+        to={`/user/${user.id}`}
       >
         <div
           id="profPic-container-NavBar"
@@ -51,7 +51,7 @@ function NavBar({ user, setUser }) {
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/home/main-feed"
+          to="/"
         >
           Main
         </NavLink>
@@ -60,7 +60,7 @@ function NavBar({ user, setUser }) {
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
           }
-          to="/home/fav-feed"
+          to="/fav-feed"
         >
           Main Fav
         </NavLink>

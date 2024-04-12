@@ -1,6 +1,6 @@
 // this is the post preview module for the feed page 
 import {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
@@ -49,13 +49,15 @@ function PostPreview( {post, width, height} ) {
       <div id="mainContainer-PostPreview">
         
         <div className='sidebarBg-PostPreview'>
-          <div 
+          <NavLink to={`/user/${postUser.id}`}>
+            <div 
               id="profPic-PostPreview"
               style={{'backgroundImage': `url(${postUser.profilePic})`}}
               alt="your profile pic"
-              
             > 
-          </div>
+            </div>
+          </NavLink>
+
           
           <FollowButton state={false} width={'5rem'}/>
         </div>
