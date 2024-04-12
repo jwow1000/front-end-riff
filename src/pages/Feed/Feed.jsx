@@ -16,15 +16,21 @@ function Feed({user, feedType}) {
       // get posts by user ID async function
       const getPostsId = async (id) => {
         const data = await getUserPostsById(id);
+        console.log('checkout ur user posts', data)
         setPosts(data);
       }
 
       try {
         if(feedType === 'main') {
-          // just get all posts
+          // get all parent posts
           const postsData = await getPosts();
-          setPosts(postsData);
+          const tempArr = postsData.filter((post) => {
+            return (!post.parent) ? post : null;
+          });
+          
+          setPosts(tempArr);
         } else if (feedType === 'user') {
+          console.log('try to get user posts')
           // wait for user
           const userData = await user;
           const dataTemp = await getPostsId(userData);
@@ -47,11 +53,14 @@ function Feed({user, feedType}) {
   
   return (
     <div>
-      <div id="previewContainer-Feed">
+      <div 
+        id="previewContainer-Feed"
+        className={(feedType === 'user') ? "containerUSER-Feed" : null}
+      >
         <AddPost user={user} />
         {
           posts && posts.map((post, idx) => (
-            <PostPreview 
+            <PostPreview  
               post={post} 
               key={idx}
               width={`80vw`}

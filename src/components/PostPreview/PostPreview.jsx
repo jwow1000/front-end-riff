@@ -17,8 +17,12 @@ function PostPreview( {post, width, height} ) {
     // function to get post object
     const getUserData = async (id) => {
       const data = await getProfile(id);
+      console.log('is get user data getting called?')
+      console.log('does getting profile data work?', data)
       setPostUser(data);
+      
     }
+    // get Post data and call user data
     const getPostData = async () => {
       const posti = await post;
       setPostData( posti );
@@ -28,7 +32,7 @@ function PostPreview( {post, width, height} ) {
     getPostData();  
   }, [post]);
   // check for follows
-  
+  console.log('do we have the data', )
 
   // handle the body click
   const handleClick = () => {

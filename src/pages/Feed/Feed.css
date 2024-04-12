@@ -7,3 +7,7 @@
     justify-content: space-around;
     gap: 3rem;
 }
+
+.containerUSER-Feed {
+    width: 60vw;
+}
