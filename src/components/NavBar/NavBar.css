@@ -3,6 +3,7 @@
     background-color: #F9F0DC;
     width: 100vw;
     height: 6rem;
+    z-index: 100;
 }
 
 .link-NavBar {

@@ -38,7 +38,7 @@ export const getPost = async (id) => {
   }
 };
 
-// get a post with id
+// get a post comments with id
 export const getPostComments = async (id) => {
   try {
     const response = await api.get(`/posts/${id}/comments/`);

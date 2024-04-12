@@ -5,6 +5,7 @@ import Feed from "./pages/Feed/Feed.jsx";
 import Profile from "./pages/Profile/Profile.jsx"
 import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
+import Thread from "./pages/Thread/Thread.jsx";
 import Register from "./pages/Register/Register.jsx";
 import AddPost from "./components/AddPost/AddPost.jsx"
 import "./App.css";
@@ -18,7 +19,8 @@ function App() {
   
   // define user state to pass down and verify
   const [user, setUser] = useState([]);
-  // function to hiode layout
+  
+  // function to hide layout
   const hideLayout = (path) => {
     if(path !== '/login/' && path !== '/register') {
       return <Layout user={user} setUser={setUser} />
@@ -45,7 +47,8 @@ function App() {
 
     fetchUser();
   }, []);
-  console.log('check it out', user)
+  // console.log('check it out', user)
+  
   return (
     <div>
       {
@@ -55,13 +58,20 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         
-        {user && <Route path="/" element={<Feed user={user} feedType={'main'} />} />}
-        {user && <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />} 
-        {user && <Route path="/profile" element={<Profile user={user}/>} />}
-d      </Routes>
+        { user && (
+          <>
+            <Route path="/" element={<Feed user={user} feedType={'main'} />} />
+            <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
+            <Route path="/my-feed/" element={<Feed user={user} feedType={'user'} />} />
+            <Route path="/thread/:id" element={<Thread user={user} />} />
+            <Route path="/profile" element={<Profile user={user}/>} />
+          </>
+          )
+        }
+
+      </Routes>
     </div>
   );
 }
-export default App;
 
-// { user && <Route path="/reviews/games/:gameId" element={<GameReviews user={user}/>}/>}
+export default App;
