@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { verifyUser, getProfile } from "./services/users.js";
 import Feed from "./pages/Feed/Feed.jsx";
+import Profile from "./pages/Profile/Profile.jsx"
 import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
@@ -54,10 +55,13 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         
-        <Route path="/" element={<Feed user={user} feedType={'main'} />} />
-        <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
+        {user && <Route path="/" element={<Feed user={user} feedType={'main'} />} />}
+        {user && <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />} 
+        {user && <Route path="/profile" element={<Profile user={user}/>} />}
 d      </Routes>
     </div>
   );
 }
 export default App;
+
+// { user && <Route path="/reviews/games/:gameId" element={<GameReviews user={user}/>}/>}

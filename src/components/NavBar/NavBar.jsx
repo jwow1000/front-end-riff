@@ -37,7 +37,7 @@ function NavBar({ user, setUser }) {
         className={({ isActive }) =>
           isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
         }
-        to="/user"
+        to="/profile"
       >
         <div
           id="profPic-container-NavBar"

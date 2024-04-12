@@ -53,3 +53,13 @@ export const getProfile = async (id) => {
     throw error;
   }
 }
+
+//edit profile
+export const editProfile = async (id, data) => {
+  try {
+    const response = await api.patch(`/users/${id}/`, data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
