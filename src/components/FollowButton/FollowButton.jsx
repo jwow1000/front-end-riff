@@ -1,34 +1,41 @@
-import likeOn from "../../assets/follow-on.png";
-import likeOff from "../../assets/follow-off.png";
+import followOn from "../../assets/follow-on.png";
+import followOff from "../../assets/follow-off.png";
+import {addFollower, removeFollower} from "../../services/follows.js";
 import { useEffect, useState } from "react";
 import "./FollowButton.css";
 
 
-function LikeButton({state, width}) {
-  // define state for like status
-  const [like, setLike] = useState(false);
+function FollowButton({state, width, userId, postId}) {
+  // define state for follow status
+  const [follow, setFollow] = useState(false);
   
-  // load like from props
+  // load follow from props
   useEffect( () => {
-    setLike(state);
-  }, []);
-  
-  // toggle like on click
-  const handleClick = () => {
-    setLike(!like);
-  };
+    setFollow(state);
+  }, [state]);
 
+  // toggle follow on click
+  const handleClick = () => {
+    if(follow) {
+      removeFollower(userId);
+      setFollow(false);
+    } else {
+      addFollower(userId);
+      setFollow(true);
+    }
+  };
+  
   return (
     <div 
       onClick={handleClick}
     >
       <img 
-        src={(like) ? likeOn : likeOff} 
-        alt={(like) ? 'the like button is on' : 'the like button is off' } 
+        src={(follow) ? followOn : followOff} 
+        alt={(follow) ? 'the follow button is on' : 'the follow button is off' } 
         style={{'width': width}} 
       /> 
     </div>
   );
 }
 
-export default LikeButton;
+export default FollowButton;

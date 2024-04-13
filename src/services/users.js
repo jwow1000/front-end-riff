@@ -54,7 +54,7 @@ export const getProfile = async (id) => {
   }
 }
 
-// get all posts by user with id
+// get all posts by user with profile id
 // path('profile/<int:id>/posts/', UserPosts.as_view(), name='userPosts'),
 export const getUserPostsById = async (id) => {
   try {
@@ -68,9 +68,30 @@ export const getUserPostsById = async (id) => {
 //edit profile
 export const editProfile = async (id, data) => {
   try {
-    const response = await api.patch(`/users/${id}/`, data);
+    const response = await api.put(`/users/${id}/`, data);
     return response.data;
   } catch (error) {
     throw error;
   }
 }
+
+// add like
+export const addLike = async (postID, profileID) => {
+  try {
+    const response = await api.patch(`posts/${postID}/add_like/${profileID}/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// remove like
+export const removeLike = async (postID, profileID) => {
+  try {
+    const response = await api.patch(`posts/${postID}/remove_like/${profileID}/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+

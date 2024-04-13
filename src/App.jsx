@@ -50,7 +50,7 @@ function App() {
   // console.log('check it out', user)
   
   return (
-    <div>
+    <div id="full-page">
       {
         hideLayout(pathname)
       }
@@ -62,7 +62,6 @@ function App() {
           <>
             <Route path="/" element={<Feed user={user} feedType={'main'} />} />
             <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
-            <Route path="/my-feed/" element={<Feed user={user} feedType={'user'} />} />
             <Route path="/thread/:id" element={<Thread user={user} />} />
             <Route path="/profile" element={<Profile user={user}/>} />
           </>
