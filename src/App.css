@@ -24,7 +24,7 @@
     
 }
 
-#mainContainer-NavBar {
+/* #mainContainer-NavBar {
     background-color: #F9F0DC;
     display: flex;
     justify-content: space-between;
@@ -41,9 +41,9 @@
 
 .active-Link-NavBar {
     color: #75E3AC;
-}
+} */
 
-#profPic-container-NavBar {
+/* #profPic-container-NavBar {
     margin: 0.5rem 0 1rem 2rem;
     height: 5rem;
     width: 5rem;    
@@ -58,7 +58,7 @@
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
-}
+} */
 
 .profile-page {
     flex-grow: 1;
