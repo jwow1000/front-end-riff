@@ -77,7 +77,7 @@ function Profile({ user }) {
             <PostPreview 
               post={posts} 
               key={idx}
-              width={`80%`}
+              width={`50%`}
               height={`25rem`}/>
           ))
         }

@@ -1,4 +1,4 @@
-#mainContainer-NavBar {
+/* #mainContainer-NavBar {
     position: fixed;
     background-color: #F9F0DC;
     width: 100vw;
@@ -35,6 +35,45 @@
     height: 6rem;
     width: 75vw;
 
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+
+/*  */
+
+#mainContainer-NavBar {
+    background-color: #F9F0DC;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link-NavBar {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.link-NavBar:hover {
+    background-color: bisque;
+}
+
+.active-Link-NavBar {
+    color: #75E3AC;
+}
+
+#profPic-container-NavBar {
+    margin: 0.5rem 0 1rem 2rem;
+    height: 5rem;
+    width: 5rem;    
+    border-radius: 50%; 
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#linkContainer-NavBar {
+    width: 75vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
