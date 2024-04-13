@@ -70,7 +70,7 @@ function AddPost({ user }) {
               <h1>Add Post</h1>
               <Form className="add-post-form" encType="multipart/form-data" onSubmit={handleSubmit}>
                 <Row>
-                  <Form.Group className="mb-3" constrolId="titleInput">
+                  <Form.Group className="mb-3" controlId="titleInput">
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                       type="text"
@@ -88,7 +88,7 @@ function AddPost({ user }) {
                 </Row>
 
                 <Row>
-                  <Form.Group className="mb-3" constrolId="formFile">
+                  <Form.Group className="mb-3" controlId="formFile">
                     <Form.Label>Image</Form.Label>
                     <Form.Control
                       type="file"
@@ -106,7 +106,7 @@ function AddPost({ user }) {
                   </Form.Group>
                 </Row>
 
-                <Form.Group className="mb-3" constrolId="textBodyInput">
+                <Form.Group className="mb-3" controlId="textBodyInput">
                   <Form.Label>Description</Form.Label>
                   <Form.Control
                     as="textarea"

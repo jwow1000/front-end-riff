@@ -20,6 +20,10 @@ export const createPost = async (postData) => {
   form_data.append("text_body", postData.text_body);
   form_data.append("author", postData.author);
 
+  if (postData.parent) {
+    form_data.append("parent", postData.parent)
+  }
+
   try {
     const response = await api.post("/posts/", form_data);
     return response.data;

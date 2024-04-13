@@ -8,7 +8,7 @@ import Login from "./pages/Login/Login.jsx";
 import Thread from "./pages/Thread/Thread.jsx";
 import Register from "./pages/Register/Register.jsx";
 import AddPost from "./components/AddPost/AddPost.jsx"
-import "./App.css";
+// import "./App.css";
 
 function App() {
   const navigate = useNavigate();
