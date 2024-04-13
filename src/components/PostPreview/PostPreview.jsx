@@ -102,7 +102,7 @@ function PostPreview( {post, width, height, user} ) {
           }}
         >
           <LikeButton
-            userId={(user.id) ? user.id : null}
+            userId={(user?.id) ? user.id : null}
             postId={(postData.id) ? postData.id : null} 
             state={like}
             width={'5rem'} 
