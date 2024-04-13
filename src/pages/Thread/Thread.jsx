@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom'
 import './Thread.css';
 import AddComment from "../../components/AddComment/AddComment.jsx"
+import SubComment from "../../components/SubComment/SubComment.jsx"
 
 function Thread() {
   const { id: postId } = useParams()
@@ -34,10 +35,9 @@ useEffect(() => {
 }, [postId])
 
 useEffect(() => {
-  
   const fetchComments = async () => {
     try {
-      const fetchedComments = await getPostComments(post?.parent)
+      const fetchedComments = await getPostComments(post?.id)
 
       console.log("fetching the comment to the post", fetchedComments)
       setComments(fetchedComments.map(comment => ({ ...comment, subComments: []})))
@@ -45,21 +45,21 @@ useEffect(() => {
       console.error("Error fetching comment details:", error)
     }
   }
-  if(post?.parent) {
+  if(post) {
     
     fetchComments();
     console.log("THIS IS YOUR COMMENT", comments)
   }
 }, [post, postId])
   
-const fetchMoreComments = async (commentId) => {
-  try {
-    const fetchedMoreComments = await getPostComments(commentId)
-    setComments(comments.map((comment) => commentId ? {...comment, subComments: fetchedMoreComments } : comment))
-  } catch (error) {
-    console.error("Error fetching MORE comments:", error)
-  }
-}
+// const fetchMoreComments = async (commentId) => {
+//   try {
+//     const fetchedMoreComments = await getPostComments(commentId)
+//     setComments(comments.map((comment) => commentId ? {...comment, subComments: fetchedMoreComments } : comment))
+//   } catch (error) {
+//     console.error("Error fetching MORE comments:", error)
+//   }
+// }
 
 
   if (!post) return <div> Loading... </div>
@@ -68,21 +68,11 @@ const fetchMoreComments = async (commentId) => {
     <div>
       <h1 className="post-title-Thread">{post.title}</h1>
       <div className="img-container-Thread"><img src={post.image} alt="...Loading Post"/></div>
-      <AddComment imgUrl={post.image} parentId={post.id} chris="chris" />
+      <AddComment imgUrl={post.image} parentId={post.id} />
       <h3 className="post-description-Thread">{post.text_body}</h3>
         <div className="root-comment-Thread">
           {comments?.map((comment) => (
-            <div key={comment.id} className="map-comment-Thread" onClick={() => fetchMoreComments(comment.id)}>
-              <div>
-                <img src={comment.image}/>
-                <AddComment imgUrl={comment.image} parentId={comment.id} />
-              </div>
-              <div className="map-moreComments-Thread">
-                {comment.subComments.map((subComment) => (
-                  <h3>{subComment.image}</h3>
-                ))}
-              </div>
-            </div>
+            <SubComment comment={comment} />
           ))}
         </div>
       </div>

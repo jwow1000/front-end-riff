@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
@@ -12,9 +12,15 @@ function AddComment({ parentId, imgUrl }) {
     const [comment, setComment] = useState({
         title: "",
         text_body: "",
-        // parent: parentId,
         image: "",
       });
+
+      useEffect(() => {
+        setComment(prev => ({
+            ...prev,
+            "parent": parentId
+      }))
+      }, [parentId]) 
 
     const toggleModal = () =>{
         setModal(!modal)
@@ -58,12 +64,10 @@ function AddComment({ parentId, imgUrl }) {
         // })
         // formData.append('parent', parentId)
         // console.log(formData)
+        
+        
 
-        setComment(prev => ({
-            ...prev,
-            "parent": parentId
-      }))
-
+      console.log(comment)
 
         try {
 
@@ -74,6 +78,8 @@ function AddComment({ parentId, imgUrl }) {
                 location.reload();
             } else {
                 console.log("Comment FAILED successfully")
+                location.reload();
+
             }
             
         } catch (error) {
