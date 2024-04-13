@@ -4,6 +4,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
+import { checkFollows } from '../../services/follows.js';
 import './PostPreview.css';
 
 function PostPreview( {post, width, height, user} ) {
@@ -11,49 +12,47 @@ function PostPreview( {post, width, height, user} ) {
 
   const [postData, setPostData] = useState({});
   const [postUser, setPostUser] = useState({});
-
-  const doILikeThis = () => {
-    // map through likes
-    for(let i=0; i<postData.likes; i++) {
-      if(user.id === postData[i]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const doIFollowThisUser = () => {
-    
-  }
+  const [like, setLike] = useState(false);
+  const [following, setFollowing] = useState(false);
 
   // get post data and user data nested
   useEffect(() => {
-    const getUserData = async (id) => {
-      console.log('the author id', id);
-      const tempData = await getProfile(id);
-      console.log('am i triggered?')
-      setPostUser(tempData);
+    
+    const doIFollowAndLikeThisUser = async () => {
+      // const answer = await checkFollows(id);
+      const answer = true;
+      console.log('do I flow this user?', answer);
+      setFollowing( true );
+      
     }
     
+    const getUserData = async (id) => {
+      const tempData = await getProfile(id);
+      setPostUser(tempData);
+      
+    }
+   
     const getPostAndUser = async () => {
       // wait for the post data to arrive
       const tempPost = await post;
-      console.log('ugh',tempPost);
       setPostData(tempPost);
-      getUserData(tempPost.author + 1); 
+      doIFollowAndLikeThisUser(tempPost.author + 1);
+      getUserData(tempPost.author + 1);
+      
+
     }
 
     getPostAndUser();
     
+    
   }, [post]);
   // check for follows
   
-  console.log('what is going on with these objects',postData, postUser);
+  // console.log('what is going on with these objects',postData, user);
   // handle the body click
   const handleClick = () => {
     navigate(`thread/${postData.id}`);
   }
-  
   return (
     <div 
       id="background-PostPreview"
@@ -67,10 +66,18 @@ function PostPreview( {post, width, height, user} ) {
         id="centerClick-PostPreview"
         onClick={handleClick}
       >
+        <div id="title-PostPreview">
+          {postData.title}
+        </div>
       </div>
       <div id="mainContainer-PostPreview">
         
-        <div className='sidebarBg-PostPreview'>
+        <div 
+          className='sidebarBg-PostPreview'
+          style={{
+            'height': height
+          }}
+        >
           <NavLink to={`/user/${postUser.id}`}>
             <div 
               id="profPic-PostPreview"
@@ -81,14 +88,23 @@ function PostPreview( {post, width, height, user} ) {
           </NavLink>
 
           
-          <FollowButton state={false} width={'5rem'}/>
+          <FollowButton 
+            userId={postUser.id}
+            postId={(postData.id) ? postData.id : null} 
+            state={following} 
+            width={'5rem'}/>
         </div>
         
-        <div className='sidebarBg-PostPreview'>
+        <div 
+          className='sidebarBg-PostPreview'
+          style={{
+            'height': height
+          }}
+        >
           <LikeButton
-            userId={user.id}
-            postId={postData.id} 
-            state={doILikeThis} 
+            userId={(user.id) ? user.id : null}
+            postId={(postData.id) ? postData.id : null} 
+            state={like}
             width={'5rem'} 
           />
         </div>

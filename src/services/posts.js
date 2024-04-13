@@ -48,8 +48,6 @@ export const getPostWithUser = async (id) => {
   }
 };
 
-
-
 // get a post comments with id
 export const getPostComments = async (id) => {
   try {
@@ -59,3 +57,4 @@ export const getPostComments = async (id) => {
     throw error;
   }
 };
+

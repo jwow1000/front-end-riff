@@ -1,6 +1,5 @@
 // this is the main feed
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts } from "../../services/posts.js";
@@ -63,6 +62,7 @@ function Feed({user, feedType}) {
             <PostPreview  
               post={post} 
               key={idx}
+              user={user}
               width={`80vw`}
               height={`10rem`}
               // width={`${randomInt(20,70)}vw`}
