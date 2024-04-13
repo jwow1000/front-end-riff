@@ -1,35 +1,90 @@
 // this is the usr profile page
-import { useState, useEffect } from 'react';
-import { getProfile, editProfile } from '../../services/users.js';
-import './Profile.css';
+import { useState, useEffect } from "react";
+import { getProfile, editProfile, getUserPostsById } from "../../services/users.js";
+import PostPreview from "../../components/PostPreview/PostPreview.jsx";
+import "./Profile.css";
 
+function Profile({ user }) {
+  const [profile, setProfile] = useState({});
+  const [thisUser, setThisUser] = useState({});
 
-function Profile({user}) {
-
-  const [profile, setProfile] = useState({})
+  //logic for profile banner
+  useEffect(() => {
+    setThisUser(user.user_obj);
+  }, [user]);
 
   useEffect(() => {
-    const getUserData = async (id) => {
-      const profile = await getProfile(user.id);
-      setProfile(profile)
-    }
-    getUserData()
-  },[])
+    const getUserData = async () => {
+      const profile = await getProfile(thisUser.id);
+      setProfile(profile);
+    };
+    getUserData();
+  }, [thisUser]);
 
-  const changeProfile = async () => {
-    
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await editProfile(thisUser.id, profile);
+    location.reload();
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfile({
+      ...profile,
+      [name]: value,
+    });
+  };
+
+  //logic for getting all user posts
+  const [posts, setPosts] = useState([]);
+  
+  useEffect(()=> {
+    const fetchPosts = async(id) => {
+      const data = await getUserPostsById(profile?.id)
+      setPosts(data)
+    }
+    fetchPosts()
+  },[profile])
+
+ console.log(posts)
 
   return (
-    <div>
-      <div className='user-banner'>
-        <img className='large-profile' src={profile.profilePic}/>
-        <p>{user.username}</p>
-        {/* <button onClick={changeProfile}>Edit Profile</button> */}
+    <div className="profile-page">
+      <div className="user-banner">
+        <h1>{thisUser?.username}</h1>
+        <img className="large-profile" src={profile.profilePic} />
+        <h3>Change Profile Pic</h3>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Profile Pic:
+            <input
+              className="pic-input"
+              type="text"
+              value={profile.profilePic}
+              name="profilePic"
+              onChange={(e) => {
+                handleChange(e);
+              }}
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
       </div>
+      <div className='profile-feed'>
+        <h1>My Posts</h1>
+        {
+          posts && posts.map((posts, idx) => (
+            <PostPreview 
+              post={posts} 
+              key={idx}
+              width={`80%`}
+              height={`25rem`}/>
+          ))
+        }
 
+      </div>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
