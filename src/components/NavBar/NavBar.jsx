@@ -1,7 +1,6 @@
 // this will hold the navbar
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { signOut } from "../../services/users.js";
 import logo from "../../../public/Riff.png"
 import "./NavBar.css";

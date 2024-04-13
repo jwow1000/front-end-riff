@@ -1,13 +1,17 @@
 .profile-page {
+
     flex-grow: 1;
     display: flex;
     overflow: hidden;
     font-family: "Roboto", sans-serif;
+
 }
 
 .user-banner {
   top: 6rem;  
   position: fixed;
+
+  width: 40vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -93,16 +97,8 @@
 
 
 .profile-feed {
-<<<<<<< HEAD
-
   left: 20%;
-
   margin: 0 0 0 40vw; 
-
-=======
-  margin: 0 0 0 40vw;
-  width: 70vw;  
->>>>>>> 71b564a (profile page css)
   flex-grow: 1;
   width: 60%;
   position: relative;
