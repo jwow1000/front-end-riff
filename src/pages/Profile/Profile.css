@@ -1,10 +1,14 @@
 .profile-page {
-  flex-grow: 1;
+  /* flex-grow: 1;
   display: flex;
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 .user-banner {
+  top: 6rem;  
+  position: fixed;
+  width: 40vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   width: 35%;
@@ -25,6 +29,8 @@
 }
 
 .profile-feed {
+  margin: 0 0 0 40vw;
+  width: 60vw;  
   flex-grow: 1;
   display: flex;
   gap: 2rem;
