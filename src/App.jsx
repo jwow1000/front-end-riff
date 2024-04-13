@@ -50,7 +50,7 @@ function App() {
   // console.log('check it out', user)
   
   return (
-    <div>
+    <div id="full-page">
       {
         hideLayout(pathname)
       }

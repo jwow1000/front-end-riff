@@ -54,7 +54,7 @@ export const getProfile = async (id) => {
   }
 }
 
-// get all posts by user with id
+// get all posts by user with profile id
 // path('profile/<int:id>/posts/', UserPosts.as_view(), name='userPosts'),
 export const getUserPostsById = async (id) => {
   try {
@@ -68,7 +68,7 @@ export const getUserPostsById = async (id) => {
 //edit profile
 export const editProfile = async (id, data) => {
   try {
-    const response = await api.patch(`/users/${id}/`, data);
+    const response = await api.put(`/users/${id}/`, data);
     return response.data;
   } catch (error) {
     throw error;
