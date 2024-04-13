@@ -13,7 +13,6 @@ function Profile({ user }) {
     const getUserData = async () => {
       const us = await user;
       setThisUser(us);
-      console.log('user obj', us.user_obj)
       const profile = await getProfile(us.user_obj.id);
       setProfile(profile);
     };
@@ -45,17 +44,15 @@ function Profile({ user }) {
     fetchPosts()
   },[profile])
 
- console.log(posts)
-
   return (
     <div className="profile-page">
       <div className="user-banner">
-        <h1>{thisUser?.username}</h1>
+        <h1 className="username-banner">{thisUser?.user_obj?.username}</h1>
         <img className="large-profile" src={profile.profilePic} />
-        <h3>Change Profile Pic</h3>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Profile Pic:
+        <h3 className="form-name">Change Profile Pic</h3>
+        <form className='profpic-form' onSubmit={handleSubmit}>
+          <label className="pic-label">
+            Edit:
             <input
               className="pic-input"
               type="text"
@@ -66,7 +63,7 @@ function Profile({ user }) {
               }}
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className="submit-button" type="submit">Submit</button>
         </form>
       </div>
       <div className='profile-feed'>
@@ -75,6 +72,7 @@ function Profile({ user }) {
           posts && posts.map((posts, idx) => (
             <PostPreview 
               post={posts} 
+              user={user}
               key={idx}
               width={`50%`}
               height={`25rem`}/>
