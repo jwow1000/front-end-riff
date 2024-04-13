@@ -1,6 +1,5 @@
 // this is the main feed
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts } from "../../services/posts.js";
@@ -16,15 +15,21 @@ function Feed({user, feedType}) {
       // get posts by user ID async function
       const getPostsId = async (id) => {
         const data = await getUserPostsById(id);
+        console.log('checkout ur user posts', data)
         setPosts(data);
       }
 
       try {
         if(feedType === 'main') {
-          // just get all posts
+          // get all parent posts
           const postsData = await getPosts();
-          setPosts(postsData);
+          const tempArr = postsData.filter((post) => {
+            return (!post.parent) ? post : null;
+          });
+          
+          setPosts(tempArr);
         } else if (feedType === 'user') {
+          console.log('try to get user posts')
           // wait for user
           const userData = await user;
           const dataTemp = await getPostsId(userData);
@@ -46,14 +51,20 @@ function Feed({user, feedType}) {
   }, [feedType]);
   
   return (
-    <div>
-      <div id="previewContainer-Feed">
-        <AddPost user={user} />
+    <div id="mainContainer-Feed">
+      <div 
+        id="previewContainer-Feed"
+        className={(feedType === 'user') ? "containerUSER-Feed" : null}
+      >
+        <div id="addPost-Feed">
+          <AddPost user={user} />
+        </div>
         {
           posts && posts.map((post, idx) => (
-            <PostPreview 
+            <PostPreview  
               post={post} 
               key={idx}
+              user={user}
               width={`80vw`}
               height={`10rem`}
               // width={`${randomInt(20,70)}vw`}

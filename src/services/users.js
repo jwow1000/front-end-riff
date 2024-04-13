@@ -74,3 +74,24 @@ export const editProfile = async (id, data) => {
     throw error;
   }
 }
+
+// add like
+export const addLike = async (postID, profileID) => {
+  try {
+    const response = await api.patch(`posts/${postID}/add_like/${profileID}/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// remove like
+export const removeLike = async (postID, profileID) => {
+  try {
+    const response = await api.patch(`posts/${postID}/remove_like/${profileID}/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
