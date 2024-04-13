@@ -56,23 +56,3 @@
     justify-content: space-around;
     align-items: center;
 } */
-
-.profile-page {
-    flex-grow: 1;
-    display: flex;
-    overflow: hidden;
-}
-
-.profile-feed {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-}
-
-#full-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}

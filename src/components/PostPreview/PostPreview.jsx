@@ -36,8 +36,8 @@ function PostPreview( {post, width, height, user} ) {
       // wait for the post data to arrive
       const tempPost = await post;
       setPostData(tempPost);
-      doIFollowAndLikeThisUser(tempPost.author + 1);
-      getUserData(tempPost.author + 1);
+      doIFollowAndLikeThisUser(tempPost.author);
+      getUserData(tempPost.author);
       
 
     }
