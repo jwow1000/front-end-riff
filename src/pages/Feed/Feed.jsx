@@ -51,12 +51,14 @@ function Feed({user, feedType}) {
   }, [feedType]);
   
   return (
-    <div>
+    <div id="mainContainer-Feed">
       <div 
         id="previewContainer-Feed"
         className={(feedType === 'user') ? "containerUSER-Feed" : null}
       >
-        <AddPost user={user} />
+        <div id="addPost-Feed">
+          <AddPost user={user} />
+        </div>
         {
           posts && posts.map((post, idx) => (
             <PostPreview  

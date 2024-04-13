@@ -1,6 +1,11 @@
+#mainContainer-Feed {
+    position: relative;
+
+}
+
 #previewContainer-Feed {
-    padding: 1rem 0;
-    width: 100vw;
+    margin: 1rem 2vw 0 18vw;
+    width: 80vw;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -10,4 +15,10 @@
 
 .containerUSER-Feed {
     width: 60vw;
+}
+
+#addPost-Feed {
+    position: absolute;
+    left: 2%;
+    top: 2%;
 }
