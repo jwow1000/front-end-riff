@@ -10,16 +10,15 @@ function Profile({ user }) {
 
   //logic for profile banner
   useEffect(() => {
-    setThisUser(user.user_obj);
-  }, [user]);
-
-  useEffect(() => {
     const getUserData = async () => {
-      const profile = await getProfile(thisUser.id);
+      const us = await user;
+      setThisUser(us);
+      console.log('user obj', us.user_obj)
+      const profile = await getProfile(us.user_obj.id);
       setProfile(profile);
     };
     getUserData();
-  }, [thisUser]);
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

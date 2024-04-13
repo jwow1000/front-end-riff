@@ -13,10 +13,21 @@
 
 .link-NavBar:hover {
     background-color: bisque;
+    box-shadow: 0px 0px 20px rgb(136, 239, 196);
 }
 
 .active-Link-NavBar {
     color: #75E3AC;
+    box-shadow: 10px 10px 10px rgb(100,100,200);
+}
+
+.active-ImgLink-NavBar {
+    box-shadow: 0px 0px 20px rgb(136, 239, 196);
+}
+
+.active-Link-Img-NavBar {
+    width: 200px;
+    outline: auto;
 }
 
 #profPic-container-NavBar {
@@ -30,7 +41,7 @@
 
 #linkContainer-NavBar {
     position: fixed;
-    left: 25vw;
+    left: 15vw;
     top: 0;
     height: 6rem;
     width: 75vw;
@@ -49,6 +60,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 
 .link-NavBar {
     font-size: 1.5rem;
@@ -78,4 +90,15 @@
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
+}
+
+#logo-img-NavBar {
+    height: 5rem;
+    padding: 0.5rem;
+    object-fit: contain;
+}
+
+#logoNavContainer-NavBar {
+    height: 6rem;   
+
 }

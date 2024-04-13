@@ -1,7 +1,9 @@
 // this will hold the navbar
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { signOut } from "../../services/users";
+
+import { signOut } from "../../services/users.js";
+import logo from "../../../public/Riff.png"
 import "./NavBar.css";
 
 function NavBar({ user, setUser }) {
@@ -33,20 +35,23 @@ function NavBar({ user, setUser }) {
   return (
     <div id="mainContainer-NavBar">
       <NavLink
-        id="userProf-NavBar"
+        to="/profile"
         className={({ isActive }) =>
           isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
         }
-        to="/profile"
       >
         <div
-          id="profPic-container-NavBar"
+          id="profPic-container-NavBar" 
           style={{ backgroundImage: `url(${profLink})` }}
           alt="your profile pic"
         ></div>
       </NavLink>
+
       
       <div id="linkContainer-NavBar">
+        <div id="logoNavContainer-NavBar">
+          <img id="logo-img-NavBar" src={logo} alt="Riff app logo" />
+        </div>
         <NavLink
           className={({ isActive }) =>
             isActive ? "link-NavBar active-Link-NavBar" : "link-NavBar"
