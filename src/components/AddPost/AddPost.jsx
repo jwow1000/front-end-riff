@@ -71,7 +71,7 @@ function AddPost({ user, setReload }) {
         <div className="modal-overlay">
           <div className="modal">
             <div className="modal-content">
-              <h1>Add Post</h1>
+              <h1>Add Your Post</h1>
               <Form className="add-post-form" encType="multipart/form-data" onSubmit={handleSubmit}>
                 <Row>
                   <Form.Group className="mb-3" controlId="titleInput">
