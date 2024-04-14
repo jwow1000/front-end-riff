@@ -17,7 +17,7 @@ function Feed({user, feedType}) {
       // get posts by user ID async function
       const getPostsId = async (id) => {
         const data = await getUserPostsById(id);
-        console.log('checkout ur user posts', data)
+        // console.log('checkout ur user posts', data)
         setPosts(data);
       }
 
@@ -31,7 +31,7 @@ function Feed({user, feedType}) {
           
           setPosts(tempArr);
         } else if (feedType === 'user') {
-          console.log('try to get user posts')
+          // console.log('try to get user posts')
           // wait for user
           const userData = await user;
           const dataTemp = await getPostsId(userData);
@@ -41,15 +41,14 @@ function Feed({user, feedType}) {
           // get my likes
         }
 
-        console.log('we got the posts my dude', postsData);
+        console.log('posts succesfully retrieved!', postsData);
         setPosts(postsData);
         
       } catch {
-        console.error('no posts', error);
+        console.log("can't get the posts");
       }
     }
     fetchPosts();
-    console.log('amount of objects in posts array: ', posts);
   }, [feedType, reload]);
   
   return (
