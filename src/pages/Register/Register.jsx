@@ -87,12 +87,12 @@ function Register({ setUser, setTrigUser }) {
     <div className ='register-back'>
     <div className="root-Register">
       <div id="logo-container-Register">
-        <img src={logo} alt="the RIff logo" id="logo-Register" />
+      <span className="riffSpan-Login">Riff</span> 
         <h2 style={{
           "textAlign": "left",
           "lineHeight": "0rem",
           }}
-        > Riff </h2>
+        >  </h2>
       </div>
       <div className="registerFormRoot-Register">
         <form className="registerForm-Register" onSubmit={registerHandleSubmit}>
