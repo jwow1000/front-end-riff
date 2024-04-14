@@ -14,7 +14,7 @@ function NavBar({ user, setUser }) {
   // get user data
   useEffect(() => {
     const getUserData = async () => {
-      const userData = await user.profile_obj;
+      const userData = await user?.profile_obj;
       setProfLink(
         userData?.profilePic
       );
@@ -49,6 +49,7 @@ function NavBar({ user, setUser }) {
       
       <div id="linkContainer-NavBar">
         <div id="logoNavContainer-NavBar">
+          <div id="logoName-NavBar">Riff</div>
           <img id="logo-img-NavBar" src={logo} alt="Riff app logo" />
         </div>
         <NavLink

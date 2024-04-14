@@ -48,6 +48,22 @@ const appendDay =  function(day) {
     const formatDay = appendDay(arr[2]);
     return `${num2date[ arr[1] ]} ${formatDay} ${arr[0]}`;
   }
+
+  export function parseTime(str) {
+    const negMod = (num, modd) => {
+      return ((num % modd) + modd) % modd;
+    }
+    let newStr = '';
+    if(str[0] === '0') {
+      // get rid of the leading 0
+      newStr = str.slice(1);
+    } else {
+      newStr = str;
+    }
+    const timeArr = newStr.split(':');
+    const hourShift = negMod((parseInt(timeArr[0]) - 4), 24);
+    return `${hourShift}:${timeArr[1]}`;
+  }
       
   // convert underscore names into spaces
   export function removeUnderscores(str) {
@@ -59,7 +75,8 @@ const appendDay =  function(day) {
   export const parseMongoDate = (str) => {
     if(typeof str === 'string') {
 
-        const sliced = str.slice(0,10);
-        return parseDate(sliced);
+        const slicedDate = str.slice(0,10);
+        const slicedTime = str.slice(11,16);
+        return `${parseDate(slicedDate)} ${parseTime(slicedTime)}`;
     }
   }
