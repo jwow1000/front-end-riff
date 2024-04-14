@@ -25,6 +25,7 @@ function App() {
       if (user) {
         const temp = await getProfile(user.id);
         const followsData = await followsList(temp.id)
+        console.log(followsData)
         setFollows(followsData)
         setUser({
           'user_obj': user,
@@ -54,8 +55,8 @@ function App() {
         { user && (
           
           <>
-            <Route path="/" element={<Feed user={user} follows={follows} feedType={'main'} />} />
-            <Route path="/fav-feed" element={<Feed user={user} follows={follows} feedType={'fav'} />} />
+            <Route path="/" element={<Feed user={user} follows={follows} feedType={'main'} setTrigUser={setTrigUser}/>} />
+            <Route path="/fav-feed" element={<Feed user={user} follows={follows} feedType={'fav'} setTrigUser={setTrigUser}/>} />
             <Route path="/thread/:id" element={<Thread user={user} />} />
             <Route path="/profile" element={<Profile user={user} follows={follows}/>} />
           </>

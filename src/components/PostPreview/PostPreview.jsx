@@ -5,13 +5,12 @@ import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
 import { parseMongoDate } from '../../services/conversions.js';
-import { followsList } from '../../services/follows.js';
 import './PostPreview.css';
 
-function PostPreview( {post, width, height, user, follows} ) {
+function PostPreview( {post, width, height, user, follows, setTrigUser} ) {
   const navigate = useNavigate();
 
-  // const [postData, setPostData] = useState({});
+
   const [postUser, setPostUser] = useState({});
   const [like, setLike] = useState(false);
   const [following, setFollowing] = useState(false);
@@ -19,48 +18,26 @@ function PostPreview( {post, width, height, user, follows} ) {
   // get post data and user data nested
   useEffect(() => {
     
-    // const doIFollowAndLikeThisUser = async (id) => {
-    //   // const answer = await checkFollows(id);
-    //   // const answer = true;
-    //   // console.log('do I flow this user?', answer);
-    //   // [TBU] check if id is in array of follows
-    //   setFollowing( true );
-      
-    // }
-    
-    // const getUserData = async (id) => {
-    //   const tempData = await getProfile(post.author);
-    //   setPostUser(tempData);
-      
-    // }
    
     const getPostAndUser = async () => {
-      // wait for the post data to arrive
-      // const tempPost = await post;
-      // setPostData(tempPost);
-      // doIFollowAndLikeThisUser(tempPost.author);
-      // map through follows and check if isFollowing matches post.author
+
       const tempData = await getProfile(post.author);
       setPostUser(tempData);
-
+      console.log (follows)
       const checkFollow = follows?.some(follow => {
         return follow?.isFollowing === tempData?.id
       })
-      setFollowing(checkFollow);
-      // getUserData(tempPost.author);
-      // setPostUser(user.profile_obj);
-      
+
+      setFollowing(checkFollow);     
 
     }
 
     getPostAndUser();
     
     
-  }, [post]);
+  }, [post, follows]);
   // check for follows
   
-  // console.log('what is going on with these objects',postData, user);
-  // handle the body click
   const handleClick = () => {
     navigate(`/thread/${post.id}`);
   }
@@ -109,6 +86,7 @@ function PostPreview( {post, width, height, user, follows} ) {
             userId={postUser?.user}
             postId={(post.id) ? post.id : null} 
             state={following} 
+            setTrigUser={setTrigUser}
             width={'5rem'}/>
         </div>
         
