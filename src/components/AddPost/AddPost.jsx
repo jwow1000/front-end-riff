@@ -64,7 +64,7 @@ function AddPost({ user, setReload }) {
   return (
     <>
       <button onClick={toggleModal} className="add-btn-modal">
-        Add Post
+        Add Your Own Post!
       </button>
 
       {modal && (

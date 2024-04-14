@@ -61,7 +61,15 @@ function Feed({user, feedType}) {
         <div id="addPost-Feed">
           <AddPost user={user} setReload={setReload} />
         </div>
-        <h1>Latest Riff Posts</h1>
+        <div id="header-Feed">
+          {
+            (feedType === 'main') ?
+              <h1> Latest Riff Posts</h1>
+            :
+              <h1> ˚˚ Ur Fav Riff Posters ˚˚</h1>
+
+          }
+        </div>
         {
           posts && posts.map((post, idx) => (
             <PostPreview  
@@ -70,8 +78,8 @@ function Feed({user, feedType}) {
               user={user}
               // width={`80vw`}
               // height={`10rem`}
-              width={`${randomInt(10,50)}vw`}
-              height={`${randomInt(3,10)}rem`}
+              width={`${randomInt(10,60)}vw`}
+              height={`${randomInt(8,20)}rem`}
             />
           
           ))

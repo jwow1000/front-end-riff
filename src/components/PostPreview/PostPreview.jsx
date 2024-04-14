@@ -4,6 +4,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { getProfile } from '../../services/users.js';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 import FollowButton from '../FollowButton/FollowButton.jsx';
+import { parseMongoDate } from '../../services/conversions.js';
 import { checkFollows } from '../../services/follows.js';
 import './PostPreview.css';
 
@@ -58,7 +59,7 @@ function PostPreview( {post, width, height, user} ) {
       id="background-PostPreview"
       style={{
         'width': width,
-        // 'height': height,
+        'height': height,
         'backgroundImage': `url(${postData.image})`
       }}
     >
@@ -68,6 +69,9 @@ function PostPreview( {post, width, height, user} ) {
       >
         <div id="title-PostPreview">
           {postData.title}
+        </div>
+        <div id="date-PostPreview">
+          {parseMongoDate( postData.added )}
         </div>
       </div>
       <div id="mainContainer-PostPreview">
