@@ -84,7 +84,7 @@ function PostPreview( {post, width, height, user, follows} ) {
           {parseMongoDate( post.added )}
         </div>
         <div id="date-PostPreview">
-          {parseMongoDate( postData.added )}
+          {parseMongoDate( post.added )}
         </div>
       </div>
       <div id="mainContainer-PostPreview">
