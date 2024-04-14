@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // Changed function name to avoid conflict
 import { Login as loginUser } from "../../services/users.js"; 
+import logo from "../../../public/Riff.png";
 import "./Login.css"; // Moved import statement to the top
 
 function Login({ setUser }) {
@@ -53,9 +54,17 @@ function Login({ setUser }) {
 
   return (
     <div className="root-Login">
+      <div id="logo-container-Login">
+        <img src={logo} alt="the RIff logo" id="logo-Login" />
+        <h2 style={{
+          "textAlign": "left",
+          "lineHeight": "0rem",
+          }}
+        > Riff </h2>
+      </div>
       <div className="root-loginForm-Login">
         <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}
-          <h1 className="login-text-Login"> Login </h1>
+          <h1 className="login-text-Login"> Login to the <span className="riffSpan-Login">Riff</span> Experience </h1>
           <p className="username-text-Login"> Enter Username </p>
           <input className="user-text"
             type="text"

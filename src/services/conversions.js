@@ -62,7 +62,6 @@ const appendDay =  function(day) {
     }
     const timeArr = newStr.split(':');
     const hourShift = negMod((parseInt(timeArr[0]) - 4), 24);
-    // console.log('did the split work?', `${hourShift}:${timeArr[1]}`);
     return `${hourShift}:${timeArr[1]}`;
   }
       

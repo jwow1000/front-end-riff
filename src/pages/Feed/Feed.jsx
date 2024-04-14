@@ -49,7 +49,8 @@ function Feed({user, feedType}) {
     }
     fetchPosts();
   }, [feedType, reload]);
-  console.log('theposts', posts); 
+  // console.log('theposts', posts); 
+
   return (
     <div id="mainContainer-Feed">
       <div 
@@ -76,8 +77,8 @@ function Feed({user, feedType}) {
               user={user}
               // width={`80vw`}
               // height={`10rem`}
-              width={`${randomInt(10,60)}vw`}
-              height={`${randomInt(8,20)}rem`}
+              width={`${randomInt(14,60)}vw`}
+              height={`${randomInt(10,20)}rem`}
             />
           
           ))
