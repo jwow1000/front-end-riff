@@ -59,7 +59,7 @@ function PostPreview( {post, width, height, user} ) {
       style={{
         'width': width,
         // 'height': height,
-        'backgroundImage': `linear-gradient(rgba(45,255,196,0.2), rgba(15, 15, 100, 0.5)), url(${postData.image})`
+        'backgroundImage': `url(${postData.image})`
       }}
     >
       <div

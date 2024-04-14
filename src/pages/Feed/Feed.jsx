@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts } from "../../services/posts.js";
+import {randomInt} from "../../services/helpers.js";
 import { getUserPostsById } from "../../services/users.js";
 import "./Feed.css";
 
 function Feed({user, feedType}) {
   const [posts, setPosts] = useState([]);
-  
+  const [reload, setReload] = useState(false);
+
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
@@ -48,7 +50,7 @@ function Feed({user, feedType}) {
     }
     fetchPosts();
     console.log('amount of objects in posts array: ', posts);
-  }, [feedType]);
+  }, [feedType, reload]);
   
   return (
     <div id="mainContainer-Feed">
@@ -57,18 +59,19 @@ function Feed({user, feedType}) {
         className={(feedType === 'user') ? "containerUSER-Feed" : null}
       >
         <div id="addPost-Feed">
-          <AddPost user={user} />
+          <AddPost user={user} setReload={setReload} />
         </div>
+        <h1>Latest Riff Posts</h1>
         {
           posts && posts.map((post, idx) => (
             <PostPreview  
               post={post} 
               key={idx}
               user={user}
-              width={`80vw`}
-              height={`10rem`}
-              // width={`${randomInt(20,70)}vw`}
-              // height={`${randomInt(3,10)}rem`}
+              // width={`80vw`}
+              // height={`10rem`}
+              width={`${randomInt(10,50)}vw`}
+              height={`${randomInt(3,10)}rem`}
             />
           
           ))

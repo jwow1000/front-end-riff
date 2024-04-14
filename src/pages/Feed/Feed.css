@@ -4,11 +4,11 @@
 }
 
 #previewContainer-Feed {
-    margin: 1rem 2vw 0 18vw;
-    width: 80vw;
+    margin: 1rem 0;
+    width: 100vw;
     display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+    flex-flow: row wrap;
+    /* align-items: center; */
     justify-content: space-around;
     gap: 3rem;
 }

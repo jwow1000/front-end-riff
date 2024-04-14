@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import { createPost } from "../../services/posts.js";
 import "./AddPost.css";
 
-function AddPost({ user }) {
+function AddPost({ user, setReload }) {
 
   //modal
 
@@ -15,8 +15,11 @@ function AddPost({ user }) {
 
   const toggleModal = () => {
     setModal(!modal);
-
   };
+
+  const reloadFeed = () => {
+    setReload(prevReload => !prevReload);
+  }
 
   const [post, setPost] = useState({
     title: "",
@@ -54,7 +57,8 @@ function AddPost({ user }) {
       setErrors(response.data);
     }
     toggleModal();
-    location.reload();
+    reloadFeed();
+    // location.reload();
   };
 
   return (
