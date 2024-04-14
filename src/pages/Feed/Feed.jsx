@@ -2,55 +2,54 @@
 import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
-import { getPosts } from "../../services/posts.js";
+import { getPosts, getFavPosts } from "../../services/posts.js";
 import {randomInt} from "../../services/helpers.js";
 import { getUserPostsById } from "../../services/users.js";
+import { followsList } from "../../services/follows.js";
 import "./Feed.css";
 
-function Feed({user, feedType}) {
+function Feed({user, follows, feedType}) {
   const [posts, setPosts] = useState([]);
   const [reload, setReload] = useState(false);
 
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
-      // get posts by user ID async function
-      const getPostsId = async (id) => {
-        const data = await getUserPostsById(id);
-        // console.log('checkout ur user posts', data)
-        setPosts(data);
-      }
+      // // get posts by user ID async function
+      // const getPostsId = async (id) => {
+      //   const data = await getUserPostsById(id);
+      //   console.log('checkout ur user posts', data)
+      //   setPosts(data);
+      // }
 
       try {
         if(feedType === 'main') {
           // get all parent posts
           const postsData = await getPosts();
+          // console.log("This is the post Data in main: ", postsData)
           const tempArr = postsData.filter((post) => {
             return (!post.parent) ? post : null;
           });
           
           setPosts(tempArr);
-        } else if (feedType === 'user') {
-          // console.log('try to get user posts')
-          // wait for user
-          const userData = await user;
-          const dataTemp = await getPostsId(userData);
-          setPosts(dataTemp);
+        } else if (feedType === 'fav') {
+          console.log(user.profile_obj.id)
+          const dataTemp = await getFavPosts(user.profile_obj.id);
+          const tempArr = dataTemp.filter((post) => {
+            return (!post.parent) ? post : null;
+          });
+          setPosts(tempArr)
         } else {
           // get my likes
         }
-
-        console.log('posts succesfully retrieved!', postsData);
-        setPosts(postsData);
         
       } catch {
         console.log("can't get the posts");
       }
     }
-    fetchPosts();
-  }, [feedType, reload]);
-  // console.log('theposts', posts); 
-
+    fetchPosts()},
+   [feedType, reload])
+  
   return (
     <div id="mainContainer-Feed">
       <div 

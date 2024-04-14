@@ -12,7 +12,7 @@ function LikeButton({state, width, postId, userId}) {
   // load like from props
   useEffect( () => {
     setLike(state);
-    console.log('check state in likeButton', state);
+    // console.log('check state in likeButton', state);
   }, [state]);
   // async axios add like
   

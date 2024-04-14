@@ -5,50 +5,47 @@ import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import "./Profile.css";
 
 function Profile({ user }) {
-  const [profile, setProfile] = useState({});
-  const [thisUser, setThisUser] = useState({});
+  const [profilePic, setProfilePic] = useState(user?.profile_obj?.profilePic);
+  // const [thisUser, setThisUser] = useState({});
 
   //logic for profile banner
-  useEffect(() => {
-    const getUserData = async () => {
-      const us = await user;
-      setThisUser(us);
-      const profile = await getProfile(us.user_obj.id);
-      setProfile(profile);
-    };
-    getUserData();
-  }, [user]);
+  // useEffect(() => {
+  //   const getUserData = async () => {
+  //     const us = await user;
+  //     setThisUser(us);
+  //     const profile = await getProfile(us.user_obj.id);
+  //     setProfile(profile);
+  //   };
+  //   getUserData();
+  // }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await editProfile(thisUser.id, profile);
+    await editProfile(user?.user_obj?.id, { profilePic });
     location.reload();
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfile({
-      ...profile,
-      [name]: value,
-    });
+    const { value } = e.target;
+    setProfilePic(value);
   };
 
   //logic for getting all user posts
   const [posts, setPosts] = useState([]);
   
   useEffect(()=> {
-    const fetchPosts = async(id) => {
-      const data = await getUserPostsById(profile?.id)
+    const fetchPosts = async() => {
+      const data = await getUserPostsById(user?.profile_obj?.id)
       setPosts(data)
     }
     fetchPosts()
-  },[profile])
+  },[user])
 
   return (
     <div className="profile-page">
       <div className="user-banner">
-        <h1 className="username-banner">{thisUser?.user_obj?.username}</h1>
-        <img className="large-profile" src={profile.profilePic} />
+        <h1 className="username-banner">{user?.user_obj?.username}</h1>
+        <img className="large-profile" src={user?.profile_obj?.profilePic} />
         <h3 className="form-name">Change Profile Pic</h3>
         <form className='profpic-form' onSubmit={handleSubmit}>
           <label className="pic-label">
@@ -56,7 +53,7 @@ function Profile({ user }) {
             <input
               className="pic-input"
               type="text"
-              value={profile.profilePic}
+              value={profilePic}
               name="profilePic"
               onChange={(e) => {
                 handleChange(e);

@@ -14,7 +14,8 @@ function NavBar({ user, setUser }) {
   // get user data
   useEffect(() => {
     const getUserData = async () => {
-      const userData = await user?.profile_obj;
+      const userData = await user.profile_obj;
+      console.log('navbar user', userData);
       setProfLink(
         userData?.profilePic
       );
@@ -41,7 +42,7 @@ function NavBar({ user, setUser }) {
       >
         <div
           id="profPic-container-NavBar" 
-          style={{ backgroundImage: `url(${profLink})` }}
+          style={{ backgroundImage: `url(${user?.profile_obj?.profilePic})` }}
           alt="your profile pic"
         ></div>
       </NavLink>
