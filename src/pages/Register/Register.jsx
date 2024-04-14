@@ -64,6 +64,7 @@ function Register({ setUser }) {
         </button>
       );
     } else {
+     
       return <button type="submit" className={toggleForm}>Register</button>;
     }
   };
@@ -79,17 +80,15 @@ function Register({ setUser }) {
     profilePic,
   } = registerForm;
 
+
   return (
+    <div className ='register-back'>
     <div className="root-Register">
       <div className="registerFormRoot-Register">
         <form className="registerForm-Register" onSubmit={registerHandleSubmit}>
           <h1>Register</h1>
-          
-          {renderRegisterError()}
-          
-          <div className="form-username-Register">
             <p className="placeHolder-username-Register">Username:</p>
-            <input
+            <input className="user-txt"
               type="text"
               name="username"
               value={username}
@@ -97,11 +96,10 @@ function Register({ setUser }) {
               required
               autoComplete="off"
             />
-          </div>
           
-          <div className="form-email-Register">
+           
             <p className="placeHolder-email-Register">email:</p>
-            <input
+            <input className='email-txt'
               type="text"
               name="email"
               value={email}
@@ -109,35 +107,32 @@ function Register({ setUser }) {
               required
               autoComplete="off"
             />
-          </div>
           
-          <div className="form-password-Register">
+        
             <p className="placeHolder-password-Register">password</p>
-            <input
+            <input className ='password-txt'
               type="password"
               name="password"
               value={password}
               onChange={registerHandleChange}
               required
             />
-          </div>
-          
-          <div className="form-passwordConfirmation-Register">
+        
+        
             <p className="placeHolder-passwordConfirmation-Register">
               password confirmation
             </p>
-            <input
+            <input className='password-confirm'
               type="password"
               name="passwordConfirmation"
               value={passwordConfirmation}
               onChange={registerHandleChange}
               required
             />
-          </div>
-          
-          <div className="form-firstName-Register">
+     
+        
             <p className="placeHolder-firstName-Register">first name:</p>
-            <input
+            <input className = 'first-name'
               type="text"
               name="first_name"
               value={first_name}
@@ -145,11 +140,10 @@ function Register({ setUser }) {
               required
               autoComplete="off"
             />
-          </div>
-          
-          <div className="form-lastName-Register">
+        
+
             <p className="placeHolder-lastName-Register">last name:</p>
-            <input
+            <input className='last-name'
               type="text"
               name="last_name"
               value={last_name}
@@ -157,25 +151,29 @@ function Register({ setUser }) {
               required
               autoComplete="off"
             />
-          </div>
+      
           
-          <div className="form-profilePic-Register">
             <p className="placeHolder-profilePic-Register">
               profile picture url:
             </p>
-            <input
+            <input className ='profile-url'
               type="text"
               name="profilePic"
               value={profilePic}
               onChange={registerHandleChange}
               required
               autoComplete="off"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
+          />
+              {(renderRegisterError)()}  
+           </form>
+         
+        </div>
+        </div>
+        </div>
+    
+    
   );
 }
+
 
 export default Register;

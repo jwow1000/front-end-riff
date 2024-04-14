@@ -47,7 +47,7 @@ function Login({ setUser }) {
     if (loginForm.isError) {
       return <button type="submit" className={toggleForm}> {loginForm.errorMsg} </button>;
     } else {
-      return <button type="submit">Log In</button>;
+      return <button className='submit-btn'type="submit">Log In</button>;
     }
   };
 
@@ -57,7 +57,7 @@ function Login({ setUser }) {
         <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}
           <h1 className="login-text-Login"> Login </h1>
           <p className="username-text-Login"> Enter Username </p>
-          <input
+          <input className="user-text"
             type="text"
             name="username"
             value={loginForm.username}
@@ -66,7 +66,7 @@ function Login({ setUser }) {
             autoComplete="off"
           />
           <p className="password-text-Login"> Enter Password </p>
-          <input
+          <input className='password-text'
             type="password"
             name="password"
             value={loginForm.password}
@@ -74,8 +74,9 @@ function Login({ setUser }) {
             required
             autoComplete="off"
           />
-
+          <div className="barrier">
           {formError()}
+          </div>
 
           <Link to="/register">
             <p className="link-register-Login"> No account? Register here! </p>
