@@ -50,11 +50,20 @@ const appendDay =  function(day) {
   }
 
   export function parseTime(str) {
-    if(str[0] === '0') {
-      return str.slice(1);
-    } else {
-      return str;
+    const negMod = (num, modd) => {
+      return ((num % modd) + modd) % modd;
     }
+    let newStr = '';
+    if(str[0] === '0') {
+      // get rid of the leading 0
+      newStr = str.slice(1);
+    } else {
+      newStr = str;
+    }
+    const timeArr = newStr.split(':');
+    const hourShift = negMod((parseInt(timeArr[0]) - 4), 24);
+    // console.log('did the split work?', `${hourShift}:${timeArr[1]}`);
+    return `${hourShift}:${timeArr[1]}`;
   }
       
   // convert underscore names into spaces
