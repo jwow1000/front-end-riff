@@ -9,19 +9,19 @@ function NavBar({ user, setUser }) {
   // navigate function
   const navigate = useNavigate();
 
-  const [profLink, setProfLink] = useState("");
+  // const [profLink, setProfLink] = useState("");
   
   // get user data
-  useEffect(() => {
-    const getUserData = async () => {
-      const usr = await user.profile_obj;
-      setProfLink(
-        usr.profilePic
-      );
+  // useEffect(() => {
+  //   const getUserData = async () => {
+  //     const usr = await user.profile_obj;
+  //     setProfLink(
+  //       usr.profilePic
+  //     );
 
-    }
-    getUserData();  
-  }, [user]);
+  //   }
+  //   getUserData();  
+  // }, [user]);
 
   // this is sign out function
   const handleSignOut = async () => {
@@ -41,7 +41,7 @@ function NavBar({ user, setUser }) {
       >
         <div
           id="profPic-container-NavBar" 
-          style={{ backgroundImage: `url(${profLink})` }}
+          style={{ backgroundImage: `url(${user?.profile_obj?.profilePic})` }}
           alt="your profile pic"
         ></div>
       </NavLink>

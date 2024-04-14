@@ -62,3 +62,12 @@ export const getPostComments = async (id) => {
   }
 };
 
+//get all posts by all fav users
+export const getFavPosts = async(id) => {
+  try{
+    const response = await api.get(`/follows/${id}/posts/`);
+    return response.data;
+  } catch(error) {
+    throw error;
+  }
+}

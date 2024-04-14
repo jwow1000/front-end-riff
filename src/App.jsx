@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { verifyUser, getProfile } from "./services/users.js";
+import { followsList } from "./services/follows.js";
 import Feed from "./pages/Feed/Feed.jsx";
 import Profile from "./pages/Profile/Profile.jsx"
 import Layout from "./components/Layout/Layout.jsx";
@@ -18,7 +19,8 @@ function App() {
   const { pathname } = location;
   
   // define user state to pass down and verify
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
+  const [follows, setFollows] = useState([])
   
   // function to hide layout
   const hideLayout = (path) => {
@@ -33,15 +35,16 @@ function App() {
     const fetchUser = async () => {
       const user = await verifyUser();
       if (user) {
-        const temp = getProfile(user.id);
+        const temp = await getProfile(user.id);
+        const followsData = await followsList(temp.id)
+        setFollows(followsData)
         setUser({
           'user_obj': user,
           'profile_obj': temp
         });
-        console.log('we got a user');
       } else {
         setUser(null);
-        navigate("login/");
+        navigate("/login");
       }
     };
 
@@ -60,10 +63,10 @@ function App() {
         
         { user && (
           <>
-            <Route path="/" element={<Feed user={user} feedType={'main'} />} />
-            <Route path="/fav-feed" element={<Feed user={user} feedType={'fav'} />} />
+            <Route path="/" element={<Feed user={user} follows={follows} feedType={'main'} />} />
+            <Route path="/fav-feed" element={<Feed user={user} follows={follows} feedType={'fav'} />} />
             <Route path="/thread/:id" element={<Thread user={user} />} />
-            <Route path="/profile" element={<Profile user={user}/>} />
+            <Route path="/profile" element={<Profile user={user} follows={follows}/>} />
           </>
           )
         }

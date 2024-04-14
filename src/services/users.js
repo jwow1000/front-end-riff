@@ -36,7 +36,6 @@ export const verifyUser = async () => {
   if (token) {
     const resp = await api.get("/users/token/refresh/");
     localStorage.setItem("token", resp.data.access);
-    console.log('VERIFIED')
     return resp.data.user;
   } else {
     console.log('NOT VERIFIED')
@@ -55,7 +54,6 @@ export const getProfile = async (id) => {
 }
 
 // get all posts by user with profile id
-// path('profile/<int:id>/posts/', UserPosts.as_view(), name='userPosts'),
 export const getUserPostsById = async (id) => {
   try {
     const response = await api.get(`profile/${id}/posts`);
@@ -68,7 +66,7 @@ export const getUserPostsById = async (id) => {
 //edit profile
 export const editProfile = async (id, data) => {
   try {
-    const response = await api.put(`/users/${id}/`, data);
+    const response = await api.patch(`/users/${id}/`, data);
     return response.data;
   } catch (error) {
     throw error;
