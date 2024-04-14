@@ -1,6 +1,81 @@
 .img-container-Thread img{
-    width: 20%;
+    height: 300px;
+    width: 300px;
 }
 .map-comment-Thread img{
-    width: 20%;
+    height: 200px;
+    width: 200px;
 }
+
+#scroll-container {
+    width: 250px;
+    /* below this is for the text effect */
+border: 3px solid black;
+border-radius: 5px;
+height: 100px;
+overflow: hidden;
+}
+
+#scroll-text {
+height: 100%;
+text-align: center;
+
+/* animation properties */
+-moz-transform: translateY(100%);
+-webkit-transform: translateY(100%);
+transform: translateY(100%);
+
+-moz-animation: my-animation 5s linear infinite;
+-webkit-animation: my-animation 5s linear infinite;
+animation: my-animation 5s linear infinite;
+}
+
+/* for Firefox */
+@-moz-keyframes my-animation {
+from { -moz-transform: translateY(100%); }
+to { -moz-transform: translateY(-100%); }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+from { -webkit-transform: translateY(100%); }
+to { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes my-animation {
+from {
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+to {
+  -moz-transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+}
+
+  .root-Thread {
+    display: flex;
+    justify-content: center;
+  }
+
+  .root-post-Thread {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    padding: 2%;
+  }
+
+  .map-comment-Thread {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #root-scroll-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getPostComments } from "../../services/posts.js"
 import AddComment from "../AddComment/AddComment";
+import "./SubComment.css"
+
 
 function SubComment({comment}) {
    
@@ -20,17 +22,20 @@ function SubComment({comment}) {
     )
 
   return (
-    <div
-      key={comment.id}
-      className="map-comment-Thread"
-      >
-      <button onClick={() => {setShowChildren(!showChildren)}}>RENDER MORE COMMENTS</button>
-      <div className="test">{comment.id}</div>
-      <div>
-        <img src={comment.image} />
-        {childComments.length > 0? <p>{childComments.length} subcomments</p>: null}
-        <AddComment imgUrl={comment.image} parentId={comment.id} />
-      </div>
+    <div key={comment.id} className="map-comment-Thread">
+        <div>
+          <img src={comment.image} />
+        </div>
+          <AddComment imgUrl={comment.image} parentId={comment.id} />
+        <div id="scroll-container">
+          <h3 id="scroll-text" className="post-description-Thread">{comment.text_body}</h3>
+        </div>
+        <div>
+          {childComments.length > 0? <p>{childComments.length} subcomments</p>: null}
+        </div>
+        <div className="comments-btn-SubComment">
+          <button onClick={() => {setShowChildren(!showChildren)}}></button>
+        </div>
       <div className="map-moreComments-Thread">
         {showChildren && childComments.map((comment) => (
           <SubComment comment={comment}/>

@@ -65,17 +65,29 @@ useEffect(() => {
   if (!post) return <div> Loading... </div>
 
   return (
-    <div>
-      <h1 className="post-title-Thread">{post.title}</h1>
-      <div className="img-container-Thread"><img src={post.image} alt="...Loading Post"/></div>
-      <AddComment imgUrl={post.image} parentId={post.id} />
-      <h3 className="post-description-Thread">{post.text_body}</h3>
-        <div className="root-comment-Thread">
+    <div className="root-Thread">
+      <div className="root-post-Thread">
+        <div className="div-post-title-Thread">
+          <p className="post-title-Thread">{post.title}</p>
+        </div>
+        <div className="img-container-Thread">
+          <img src={post.image} alt="...Loading Post"/>
+        </div>
+        <div id="scroll-container">
+          <h3 id="scroll-text" className="post-description-Thread">{post.text_body}</h3>
+        </div>
+        <div className="AddComment-Thread">
+          <AddComment imgUrl={post.image} parentId={post.id} />
+        </div>
+      </div>  
+      <div className="root-comment-Thread">
+        <div id="root-scroll-container">
           {comments?.map((comment) => (
             <SubComment comment={comment} />
           ))}
         </div>
       </div>
+    </div>
   )
 }
 
