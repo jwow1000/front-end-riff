@@ -2,8 +2,7 @@
 import api from "./apiConfig.js";
 
 // get followers
-// 'follows/<int:profile_id>/users/', FollowsList.as_view(), name='followsList'
-export const FollowsList = async (profile_id) => {
+export const followsList = async (profile_id) => {
     try {
       const response = await api.get(`follows/${profile_id}/users/`);
       return response.data;
@@ -15,7 +14,7 @@ export const FollowsList = async (profile_id) => {
 // add Follower
 export const addFollower = async (id) => {
     try {
-      const response = await api.post(`add-follow/${id}`);
+      const response = await api.post("follows/", { isFollowing: id });
       return response.data;
     } catch (error) {
       throw error;
@@ -25,7 +24,7 @@ export const addFollower = async (id) => {
 // remove Follower
 export const removeFollower = async (id) => {
   try {
-    const response = await api.delete(`remove-follow/${id}/`);
+    const response = await api.delete(`follows/${id}/`);
     return response.data;
   } catch (error) {
     throw error;

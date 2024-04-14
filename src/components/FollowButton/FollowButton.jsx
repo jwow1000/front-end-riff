@@ -7,7 +7,7 @@ import "./FollowButton.css";
 
 function FollowButton({state, width, userId, postId}) {
   // define state for follow status
-  const [follow, setFollow] = useState(false);
+  const [follow, setFollow] = useState(state);
   
   // load follow from props
   useEffect( () => {

@@ -42,7 +42,7 @@ function NavBar({ user, setUser }) {
       >
         <div
           id="profPic-container-NavBar" 
-          style={{ backgroundImage: `url(${profLink})` }}
+          style={{ backgroundImage: `url(${user?.profile_obj?.profilePic})` }}
           alt="your profile pic"
         ></div>
       </NavLink>
