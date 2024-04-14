@@ -121,14 +121,14 @@ button[type="submit"]:hover {
   border-radius:8px
 }
 
-
-
 .register-back {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    background: no-repeat center/100% url("https://img.freepik.com/free-vector/abstract-red-circle-black-background-technology_1142-9839.jpg?w=2000&t=st=1712947917~exp=1712948517~hmac=9a18f0b7f51727e40c80c32b9e4a3e4174922b912f1789b072756aec5053d8c7");
+    background: no-repeat url("https://img.freepik.com/free-vector/abstract-red-circle-black-background-technology_1142-9839.jpg?w=2000&t=st=1712947917~exp=1712948517~hmac=9a18f0b7f51727e40c80c32b9e4a3e4174922b912f1789b072756aec5053d8c7");
+    background-size: cover;
+    background-position: 70% 0%;
     height: 100vh; /* Adjusted to fill the entire viewport */
   }
   
