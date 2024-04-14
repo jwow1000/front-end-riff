@@ -1,5 +1,6 @@
 #mainContainer-Feed {
     position: relative;
+    
 
 }
 
@@ -9,7 +10,8 @@
 }
 
 #previewContainer-Feed {
-    margin: 0 0 2rem 5vw;
+    margin: 6rem 0 2rem 5vw;
+    padding: 1rem 0 0 0;
     width: 90vw;
     display: flex;
     flex-flow: row wrap;
@@ -24,6 +26,6 @@
 
 #addPost-Feed {
     position: absolute;
-    left: 1%;
+    left: 1rem; 
     top: 0.5rem;
 }
