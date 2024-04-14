@@ -13,6 +13,25 @@ p {
     font-size: 0.7em;
 }
 
+#logo-container-Register {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 10vw;
+}
+#logo-Register {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.register-text-Register {
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  color: #dc3545;
+}
+
 .registerForm-Register {
     display: flex;
     flex-direction: column;
@@ -43,7 +62,7 @@ p {
 }
 
 .user-txt{
-    width: 96%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -53,7 +72,7 @@ p {
     margin: auto;
 }
 .email-txt{
-    width: 96%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -63,7 +82,7 @@ p {
     margin: auto;
 }
 .password-txt{
-    width: 96%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -73,7 +92,7 @@ p {
     margin: auto;
 }
 .password-confirm{
-    width: 96%;
+    width: 70%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -83,7 +102,7 @@ p {
     margin: auto;
 }
 .first-name{
-    width: 96%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -93,7 +112,7 @@ p {
     margin: auto;
 }
 .last-name{
-    width: 96%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802) ;
@@ -103,7 +122,7 @@ p {
     margin: auto;
 }
 .profile-url {
-    width: 96%;
+    width: 50%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid  rgba(253, 41, 41, 0.802);
@@ -128,18 +147,24 @@ button[type="submit"]:hover {
     color: white;
     background: no-repeat url("https://img.freepik.com/free-vector/abstract-red-circle-black-background-technology_1142-9839.jpg?w=2000&t=st=1712947917~exp=1712948517~hmac=9a18f0b7f51727e40c80c32b9e4a3e4174922b912f1789b072756aec5053d8c7");
     background-size: cover;
-    background-position: 70% 0%;
-    height: 100vh; /* Adjusted to fill the entire viewport */
-  }
+    background-position: 70%50%;
+}
   
   .root-Register {
-    width: 90%; /* Adjusted to occupy 90% of the viewport width */
-    max-width: 400px; /* Added maximum width for better responsiveness */
-    padding: 20px;
+    width: 40vw; /* Adjusted to occupy 90% of the viewport width */
+    padding: 2rem;
     border-radius: 8px;
-    background-color:transparent; /* Background color for the registration form */
+    background-color: transparent; /* Background color for the registration form */
     box-shadow: 0px 0px 10px rgba(253, 41, 41, 0.802);
     margin: auto; /* Center the form horizontally */
+  }
+
+  .riffSpan-Register{
+    color: rgb(105, 169, 45);
+    font-style: italic;
+    text-shadow: #FC0 1px 0 10px;
+    font-size: 5rem;
+    line-height: 5rem;
   }
 
   .toggleForm {

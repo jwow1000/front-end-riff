@@ -43,12 +43,12 @@ function Login({ setUser }) {
   };
 
   const formError = () => {
-    const toggleForm = loginForm.isError ? "danger" : "";
+    const toggleForm = loginForm.isError ? "submit-btn" : "submit-btn";
 
     if (loginForm.isError) {
-      return <button type="submit" className={toggleForm}> {loginForm.errorMsg} </button>;
+      return <button className={toggleForm} type="submit" > {loginForm.errorMsg} </button>;
     } else {
-      return <button className='submit-btn'type="submit">Log In</button>;
+      return <button className='submit-btn' type="submit">Log In</button>;
     }
   };
 
@@ -64,7 +64,14 @@ function Login({ setUser }) {
       </div>
       <div className="root-loginForm-Login">
         <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}
-          <h1 className="login-text-Login"> Login to the <span className="riffSpan-Login">Riff</span> Experience </h1>
+          <h1 className="login-text-Login"> 
+            Login to the 
+            <br /> 
+            <span className="riffSpan-Login">Riff</span> 
+            <br />
+            Experience 
+          </h1>
+
           <p className="username-text-Login"> Enter Username </p>
           <input className="user-text"
             type="text"
@@ -74,6 +81,7 @@ function Login({ setUser }) {
             required
             autoComplete="off"
           />
+
           <p className="password-text-Login"> Enter Password </p>
           <input className='password-text'
             type="password"
@@ -83,10 +91,10 @@ function Login({ setUser }) {
             required
             autoComplete="off"
           />
-          <div className="barrier">
-          {formError()}
-          </div>
 
+          <div className="button-container-Login">
+            {formError()}
+          </div>
           <Link to="/register">
             <p className="link-register-Login"> No account? Register here! </p>
           </Link>
