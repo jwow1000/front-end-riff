@@ -1,0 +1,51 @@
+.modal-content {
+    background: grey;
+    font-size: large;
+}
+
+.btn-close-modal {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+.form-group button {
+    background-color: #9b1b01cc;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    width: 10rem;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group textarea {
+    width: 300px;
+    height: 100px;
+}
+
+.btn-close-modal button {
+    background-color: rgba(212, 66, 66, 0.627);
+}
+
+.btn-AddComment {
+    /* padding: 2%; */
+}

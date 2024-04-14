@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
-import Row from "react-bootstrap/Row"
+import Modal from 'react-modal';
 import { createPost } from "../../services/posts.js"
 import "./AddComment.css"
 
@@ -55,17 +53,6 @@ function AddComment({ parentId, imgUrl }) {
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-        // const formData = new FormData()
-        // console.log(formData)
-        // console.log(comment)
-        // Object.keys(comment).forEach(key => {
-        //     console.log(key, comment[key])
-        //     formData.append(key, comment[key])
-        // })
-        // formData.append('parent', parentId)
-        // console.log(formData)
-        
-        
 
       console.log(comment)
 
@@ -88,65 +75,132 @@ function AddComment({ parentId, imgUrl }) {
       };
 
 
-  return (
-    <div>
-        <button onClick={toggleModal} className="btn-modal-AddComment"> Add Comment</button>
-        {modal && (
-          <div className="root-modal-AddComment">
-            <div className="form-modal-AddComment">
-                <h1>Add Comment</h1>
-                <Form onSubmit={handleSubmit}>
-                    <Button variant="info" onClick={handleDownloadImage}>
-                        Download Img
-                    </Button>
-                    <Row>
-                        <Form.Group className="title-add-AddComment">
-                        <Form.Label> Title </Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="title"
-                            value={comment.title}
-                            onChange={handleChange}
-                        />
-                        </Form.Group>
-                    </Row>
-                    <Row>
-                        <Form.Group className="text-add-AddComment">
-                        <Form.Label> Description </Form.Label>
-                        <Form.Control
-                            as="textarea"
-                            rows={3}
-                            name="text_body"
-                            value={comment.text_body}
-                            onChange={handleChange}
-                        />
-                        </Form.Group>
-                    </Row>
-                    <Row>
-                        <Form.Group className="img-upload-AddComment" controlId="formFile">
-                        <Form.Label>Image</Form.Label>
-                        <Form.Control
-                            type="file"
-                            name="image"
-                            accept="image/jpeg,image/png"
-                            onChange={(e) => {
-                                handleChange(e);
-                            }}
-                            />
-                        </Form.Group>
-                    </Row>
-                    <Button variant="primary" type="submit">
-                        Submit
-                        </Button>
-                    <Button variant="secondary" onClick={toggleModal} style={{ marginLeft: '10px' }}>
-                        Close
-                    </Button>
-                </Form>
-            </div>
-          </div>  
-        )}
+//   return (
+//     <div>
+//         <button onClick={toggleModal} className="btn-modal-AddComment"> Draw me Leo!</button>
+//         {modal && (
+//           <div className="root-modal-AddComment">
+//             <div className="form-AddComment">
+//               <div className="form-title-AddComent">
+//                 <h1>Like one of your french girls!</h1>
+//               </div>
+//                 <Form onSubmit={handleSubmit}>
+//                     <Button variant="info" onClick={handleDownloadImage}>
+//                         Download Img
+//                     </Button>
+//                     <Row>
+//                         <Form.Group className="title-add-AddComment">
+//                         <Form.Label> Title </Form.Label>
+//                         <Form.Control
+//                             type="text"
+//                             name="title"
+//                             value={comment.title}
+//                             onChange={handleChange}
+//                         />
+//                         </Form.Group>
+//                     </Row>
+//                     <Row>
+//                         <Form.Group className="text-add-AddComment">
+//                         <Form.Label> Description </Form.Label>
+//                         <Form.Control
+//                             as="textarea"
+//                             rows={3}
+//                             name="text_body"
+//                             value={comment.text_body}
+//                             onChange={handleChange}
+//                         />
+//                         </Form.Group>
+//                     </Row>
+//                     <Row>
+//                         <Form.Group className="img-upload-AddComment" controlId="formFile">
+//                         <Form.Label></Form.Label>
+//                         <Form.Control
+//                             type="file"
+//                             name="image"
+//                             accept="image/jpeg,image/png"
+//                             onChange={(e) => {
+//                                 handleChange(e);
+//                             }}
+//                             />
+//                         </Form.Group>
+//                     </Row>
+//                     <Button variant="primary" type="submit">
+//                         Submit
+//                     </Button>
+//                     <Button variant="secondary" onClick={toggleModal} style={{ marginLeft: '10px' }}>
+//                         Close
+//                     </Button>
+//                 </Form>
+//             </div>
+//           </div>  
+//         )}
+//     </div>
+//   )
+// }
+
+return (
+  <div>
+    <div className="btn-AddComment">
+      <button onClick={toggleModal} className="btn-modal-AddComment">Draw me Leo!</button>
     </div>
-  )
+      <Modal
+          isOpen={modal}
+          onRequestClose={toggleModal}
+          contentLabel="Add Comment"
+          className="modal-content"
+          overlayClassName="modal-overlay"
+      >
+          <div className="btn-close-modal">
+            <button onClick={toggleModal} className="close-modal-button">X</button>
+          </div>  
+          <div className="modal-header">
+              <h2>Like one of your French girls</h2>
+          </div>
+          <form className="modal-form" onSubmit={(e) => e.preventDefault()}>
+              <div className="form-group">
+                  <label htmlFor="title">Title:</label>
+                  <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      value={comment.title}
+                      onChange={handleChange}
+                      className="text-input"
+                  />
+              </div>
+              <div className="form-group">
+                  <label htmlFor="text_body">Description:</label>
+                  <textarea
+                      id="text_body"
+                      name="text_body"
+                      rows="3"
+                      value={comment.text_body}
+                      onChange={handleChange}
+                      className="textarea-input"
+                  />
+              </div>
+              <div className="form-group">
+                <button variant="info" onClick={handleDownloadImage}>Download IMG</button>
+              </div>               
+              <div className="form-group">
+                  <label htmlFor="image">Upload Image:</label>
+                  <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      accept="image/jpeg,image/png"
+                      onChange={handleChange}
+                      className="file-input"
+                  />
+              </div>
+              <div className="form-buttons">
+                  <button type="submit" className="submit-button">Submit</button>
+              </div>
+          </form>
+      </Modal>
+  </div>
+);
 }
+
 
 export default AddComment
