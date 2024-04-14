@@ -5,7 +5,7 @@ import { Login as loginUser } from "../../services/users.js";
 import logo from "../../../public/Riff.png";
 import "./Login.css"; // Moved import statement to the top
 
-function Login({ setUser }) {
+function Login({ setUser, setTrigUser }) {
   const navigate = useNavigate();
 
   const [loginForm, setLoginForm] = useState({
@@ -30,6 +30,7 @@ function Login({ setUser }) {
     try {
       const userData = await loginUser(loginForm); // Fixed variable name to match
       setUser(userData);
+      setTrigUser((prevUserTrig) => !prevUserTrig);
       navigate("/");
     } catch (error) {
       console.error(error);

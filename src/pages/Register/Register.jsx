@@ -5,7 +5,7 @@ import { signUp } from "../../services/users.js";
 import logo from "../../../public/Riff.png";
 import "./Register.css";
 
-function Register({ setUser }) {
+function Register({ setUser, setTrigUser }) {
   const navigate = useNavigate();
 
   const [registerForm, setRegisterForm] = useState({
@@ -42,6 +42,7 @@ function Register({ setUser }) {
       try {
         const userData = await signUp(registerForm); 
         setUser(userData);
+        setTrigUser((prevUserTrig) => !prevUserTrig);
         console.log('user name has been set')
         navigate("/"); 
       } catch (error) {

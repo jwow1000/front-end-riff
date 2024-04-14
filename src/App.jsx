@@ -14,6 +14,7 @@ function App() {
   
   // define user state to pass down and verify
   const [user, setUser] = useState([]);
+  const [trigUser, setTrigUser] = useState(user);
   
   // fetch the user on mount
   useEffect(() => {
@@ -33,18 +34,18 @@ function App() {
     };
 
     fetchUser();
-  }, []);
+  }, [trigUser]);
 
   
   return (
     <div id="full-page">
     
-      {user && <Layout user={user} setUser={setUser}/>}
+      {user && <Layout user={user} setUser={setUser} />}
       
       <Routes>
        
-        <Route path="/login/" element={<Login setUser={setUser} />} />
-        <Route path="/register/" element={<Register setUser={setUser} />} />
+        <Route path="/login/" element={<Login setUser={setUser} setTrigUser={setTrigUser}/>} />
+        <Route path="/register/" element={<Register setUser={setUser} setTrigUser={setTrigUser}/>} />
       
         
         { user && (
