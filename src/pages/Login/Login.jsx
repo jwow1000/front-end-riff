@@ -55,12 +55,13 @@ function Login({ setUser }) {
   return (
     <div className="root-Login">
       <div id="logo-container-Login">
-        <img src={logo} alt="the RIff logo" id="logo-Login" />
+        {/* <img src={logo} alt="the RIff logo" id="logo-Login" /> */}
+        <span className="riffSpan-Login">Riff</span>
         <h2 style={{
           "textAlign": "left",
           "lineHeight": "0rem",
           }}
-        > Riff </h2>
+        >  </h2>
       </div>
       <div className="root-loginForm-Login">
         <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}

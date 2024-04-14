@@ -5,8 +5,8 @@
     margin-top:13px;
     border-radius:8px;
     padding:8px;
-    color:red;
-    background-color: black;
+    color:rgb(105, 169, 45);
+    background-color: rgb(46, 46, 46);
 }
 
 p {
@@ -29,13 +29,14 @@ p {
   text-align: center;
   margin: 0;
   font-size: 24px;
-  color: #dc3545;
+  color: rgb(105, 169, 45);
 }
 
 .registerForm-Register {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
 }
 
 .registerFormRoot-Register {
@@ -47,7 +48,7 @@ p {
 .registerForm-Register h1 {
   text-align: center;
   margin-bottom: 20px;
-  color:#fc3434;
+  color:rgb(105, 169, 45);
 }
 
 .placeHolder-username-Register,
@@ -58,14 +59,14 @@ p {
 .placeHolder-lastName-Register,
 .placeHolder-profilePic-Register {
   margin-bottom: 5px;
-  color:rgb(255, 255, 255)
+  color:rgb(105, 169, 45)
 }
 
 .user-txt{
     width: 70%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid   rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -75,7 +76,7 @@ p {
     width: 70%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -85,7 +86,7 @@ p {
     width: 70%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -95,7 +96,7 @@ p {
     width: 70%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -105,7 +106,7 @@ p {
     width: 50%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -115,7 +116,7 @@ p {
     width: 50%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802) ;
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -125,7 +126,7 @@ p {
     width: 50%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid  rgba(253, 41, 41, 0.802);
+    border: 1px solid  rgb(105, 169, 45);
     border-radius: 10px;
     color: white;
     background-color:transparent;
@@ -135,7 +136,7 @@ p {
 
 
 button[type="submit"]:hover {
-  background-color: #ab2525;
+  background-color:rgb(105, 169, 45);
   color:white; /* Button hover background color */
   border-radius:8px
 }
@@ -145,7 +146,6 @@ button[type="submit"]:hover {
     justify-content: center;
     align-items: center;
     color: white;
-    background: no-repeat url("https://img.freepik.com/free-vector/abstract-red-circle-black-background-technology_1142-9839.jpg?w=2000&t=st=1712947917~exp=1712948517~hmac=9a18f0b7f51727e40c80c32b9e4a3e4174922b912f1789b072756aec5053d8c7");
     background-size: cover;
     background-position: 70%50%;
 }
@@ -154,8 +154,8 @@ button[type="submit"]:hover {
     width: 40vw; /* Adjusted to occupy 90% of the viewport width */
     padding: 2rem;
     border-radius: 8px;
-    background-color: transparent; /* Background color for the registration form */
-    box-shadow: 0px 0px 10px rgba(253, 41, 41, 0.802);
+    /* Background color for the registration form */
+    box-shadow:rgb(105, 169, 45) ;
     margin: auto; /* Center the form horizontally */
   }
 
@@ -170,8 +170,7 @@ button[type="submit"]:hover {
   .toggleForm {
     width: 50%;
   padding: 10px;
-  background-color: rgb(0, 0, 0); /* Button background color */
-  color:  rgba(253, 41, 41, 0.802);
+  background-color:rgb(105, 169, 45); /* Button background color */
   border: none;
   border-radius: 4px;
   cursor: pointer;
