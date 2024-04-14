@@ -1,60 +1,3 @@
-/* #mainContainer-NavBar {
-    position: fixed;
-    background-color: #F9F0DC;
-    width: 100vw;
-    height: 6rem;
-    z-index: 100;
-}
-
-.link-NavBar {
-    font-size: 1.5rem;
-    color: black;
-}
-
-.link-NavBar:hover {
-    background-color: bisque;
-    box-shadow: 0px 0px 20px rgb(136, 239, 196);
-}
-
-.active-Link-NavBar {
-    color: #75E3AC;
-    box-shadow: 10px 10px 10px rgb(100,100,200);
-}
-
-.active-ImgLink-NavBar {
-    box-shadow: 0px 0px 20px rgb(136, 239, 196);
-}
-
-.active-Link-Img-NavBar {
-    width: 200px;
-    outline: auto;
-}
-
-#profPic-container-NavBar {
-    margin: 0.5rem 0 0 2rem;
-    height: 5rem;
-    width: 5rem;    
-    border-radius: 50%; 
-    background-position: 50% 50%;
-    background-size: cover;
-}
-
-#linkContainer-NavBar {
-    position: fixed;
-    left: 15vw;
-    top: 0;
-    height: 6rem;
-    width: 75vw;
-
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-} */
-
-
-/*  */
-
 #mainContainer-NavBar {
     background-color: #F9F0DC;
     display: flex;
@@ -93,14 +36,24 @@
     justify-content: space-around;
     align-items: center;
 }
+#logoNavContainer-NavBar {
+    position: relative;
+    height: 6rem;   
+}
 
 #logo-img-NavBar {
-    height: 5rem;
+    height: 4rem;
     padding: 0.5rem;
     object-fit: contain;
 }
 
-#logoNavContainer-NavBar {
-    height: 6rem;   
-
+#logoName-NavBar {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    font-style: oblique;
+    display: block;
+    margin: 0 0 0 0.5rem;
+    color: black;
+    
 }

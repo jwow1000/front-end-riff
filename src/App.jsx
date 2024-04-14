@@ -8,28 +8,15 @@ import Layout from "./components/Layout/Layout.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Thread from "./pages/Thread/Thread.jsx";
 import Register from "./pages/Register/Register.jsx";
-import AddPost from "./components/AddPost/AddPost.jsx"
 // import "./App.css";
 
 function App() {
   const navigate = useNavigate();
   
-  // get current path location to render navbar(layout) or not
-  const location = useLocation();
-  const { pathname } = location;
-  
   // define user state to pass down and verify
   const [user, setUser] = useState(null);
   const [follows, setFollows] = useState([])
   
-  // function to hide layout
-  const hideLayout = (path) => {
-    if(path !== '/login/' && path !== '/register') {
-      return <Layout user={user} setUser={setUser} />
-
-    } 
-  }
-
   // fetch the user on mount
   useEffect(() => {
     const fetchUser = async () => {
@@ -50,18 +37,21 @@ function App() {
 
     fetchUser();
   }, []);
-  // console.log('check it out', user)
+
   
   return (
     <div id="full-page">
-      {
-        hideLayout(pathname)
-      }
+    
+      {user && <Layout user={user} setUser={setUser}/>}
+      
       <Routes>
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/register" element={<Register setUser={setUser} />} />
+       
+        <Route path="/login/" element={<Login setUser={setUser} />} />
+        <Route path="/register/" element={<Register setUser={setUser} />} />
+      
         
         { user && (
+          
           <>
             <Route path="/" element={<Feed user={user} follows={follows} feedType={'main'} />} />
             <Route path="/fav-feed" element={<Feed user={user} follows={follows} feedType={'fav'} />} />

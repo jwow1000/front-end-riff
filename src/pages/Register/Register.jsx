@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../services/users.js";
+import logo from "../../../public/Riff.png";
 import "./Register.css";
 
 function Register({ setUser }) {
@@ -64,6 +65,7 @@ function Register({ setUser }) {
         </button>
       );
     } else {
+     
       return <button type="submit" className={toggleForm}>Register</button>;
     }
   };
@@ -79,103 +81,114 @@ function Register({ setUser }) {
     profilePic,
   } = registerForm;
 
+
   return (
+    <div className ='register-back'>
     <div className="root-Register">
+      <div id="logo-container-Register">
+        <img src={logo} alt="the RIff logo" id="logo-Register" />
+        <h2 style={{
+          "textAlign": "left",
+          "lineHeight": "0rem",
+          }}
+        > Riff </h2>
+      </div>
       <div className="registerFormRoot-Register">
         <form className="registerForm-Register" onSubmit={registerHandleSubmit}>
-          <h1>Register</h1>
+          <h1 className="register-text-Register"> 
+            Register for the 
+            <br /> 
+            <span className="riffSpan-Register">Riff</span> 
+            <br />
+            Experience 
+          </h1>
           
-          {renderRegisterError()}
-          
-          <div className="form-username-Register">
-            <p className="placeHolder-username-Register">Username:</p>
-            <input
-              type="text"
-              name="username"
-              value={username}
-              onChange={registerHandleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-          
-          <div className="form-email-Register">
-            <p className="placeHolder-email-Register">email:</p>
-            <input
-              type="text"
-              name="email"
-              value={email}
-              onChange={registerHandleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-          
-          <div className="form-password-Register">
-            <p className="placeHolder-password-Register">password</p>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={registerHandleChange}
-              required
-            />
-          </div>
-          
-          <div className="form-passwordConfirmation-Register">
-            <p className="placeHolder-passwordConfirmation-Register">
-              password confirmation
-            </p>
-            <input
-              type="password"
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={registerHandleChange}
-              required
-            />
-          </div>
-          
-          <div className="form-firstName-Register">
-            <p className="placeHolder-firstName-Register">first name:</p>
-            <input
-              type="text"
-              name="first_name"
-              value={first_name}
-              onChange={registerHandleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-          
-          <div className="form-lastName-Register">
-            <p className="placeHolder-lastName-Register">last name:</p>
-            <input
-              type="text"
-              name="last_name"
-              value={last_name}
-              onChange={registerHandleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-          
-          <div className="form-profilePic-Register">
-            <p className="placeHolder-profilePic-Register">
-              profile picture url:
-            </p>
-            <input
-              type="text"
-              name="profilePic"
-              value={profilePic}
-              onChange={registerHandleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
+          <p className="placeHolder-username-Register">Username:</p>
+          <input className="user-txt"
+            type="text"
+            name="username"
+            value={username}
+            onChange={registerHandleChange}
+            required
+            autoComplete="off"
+          />
+        
+          <p className="placeHolder-email-Register">email:</p>
+          <input className='email-txt'
+            type="text"
+            name="email"
+            value={email}
+            onChange={registerHandleChange}
+            required
+            autoComplete="off"
+          />
+        
+      
+          <p className="placeHolder-password-Register">password</p>
+          <input className ='password-txt'
+            type="password"
+            name="password"
+            value={password}
+            onChange={registerHandleChange}
+            required
+          />
+      
+      
+          <p className="placeHolder-passwordConfirmation-Register">
+            password confirmation
+          </p>
+          <input className='password-confirm'
+            type="password"
+            name="passwordConfirmation"
+            value={passwordConfirmation}
+            onChange={registerHandleChange}
+            required
+          />
+    
+      
+          <p className="placeHolder-firstName-Register">first name:</p>
+          <input className = 'first-name'
+            type="text"
+            name="first_name"
+            value={first_name}
+            onChange={registerHandleChange}
+            required
+            autoComplete="off"
+          />
+      
+
+          <p className="placeHolder-lastName-Register">last name:</p>
+          <input className='last-name'
+            type="text"
+            name="last_name"
+            value={last_name}
+            onChange={registerHandleChange}
+            required
+            autoComplete="off"
+          />
+    
+        
+          <p className="placeHolder-profilePic-Register">
+            profile picture url:
+          </p>
+          <input className ='profile-url'
+            type="text"
+            name="profilePic"
+            value={profilePic}
+            onChange={registerHandleChange}
+            required
+            autoComplete="off"
+        />
+            {(renderRegisterError)()}  
+          </form>
+         
+        </div>
+        </div>
+        </div>
+    
+    
   );
 }
+
 
 export default Register;

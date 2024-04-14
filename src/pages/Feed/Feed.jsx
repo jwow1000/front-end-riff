@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts, getFavPosts } from "../../services/posts.js";
+import {randomInt} from "../../services/helpers.js";
 import { getUserPostsById } from "../../services/users.js";
 import { followsList } from "../../services/follows.js";
 import "./Feed.css";
 
 function Feed({user, follows, feedType}) {
   const [posts, setPosts] = useState([]);
-  
+  const [reload, setReload] = useState(false);
+
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
@@ -42,11 +44,11 @@ function Feed({user, follows, feedType}) {
         }
         
       } catch {
-        console.error('no posts', error);
+        console.log("can't get the posts");
       }
     }
     fetchPosts()},
-   [feedType])
+   [feedType, reload])
   
   return (
     <div id="mainContainer-Feed">
@@ -55,7 +57,16 @@ function Feed({user, follows, feedType}) {
         className={(feedType === 'user') ? "containerUSER-Feed" : null}
       >
         <div id="addPost-Feed">
-          <AddPost user={user} />
+          <AddPost user={user} setReload={setReload} />
+        </div>
+        <div id="header-Feed">
+          {
+            (feedType === 'main') ?
+              <h1> Latest Riff Posts</h1>
+            :
+              <h1> ˚˚ Ur Fav Riff Posters ˚˚</h1>
+
+          }
         </div>
         {
           posts && posts.map((post, idx) => (
@@ -63,11 +74,10 @@ function Feed({user, follows, feedType}) {
               post={post} 
               key={idx}
               user={user}
-              follows={follows}
-              width={`80vw`}
-              height={`10rem`}
-              // width={`${randomInt(20,70)}vw`}
-              // height={`${randomInt(3,10)}rem`}
+              // width={`80vw`}
+              // height={`10rem`}
+              width={`${randomInt(14,60)}vw`}
+              height={`${randomInt(10,20)}rem`}
             />
           
           ))

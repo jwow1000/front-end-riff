@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // Changed function name to avoid conflict
 import { Login as loginUser } from "../../services/users.js"; 
+import logo from "../../../public/Riff.png";
 import "./Login.css"; // Moved import statement to the top
 
 function Login({ setUser }) {
@@ -42,22 +43,37 @@ function Login({ setUser }) {
   };
 
   const formError = () => {
-    const toggleForm = loginForm.isError ? "danger" : "";
+    const toggleForm = loginForm.isError ? "submit-btn" : "submit-btn";
 
     if (loginForm.isError) {
-      return <button type="submit" className={toggleForm}> {loginForm.errorMsg} </button>;
+      return <button className={toggleForm} type="submit" > {loginForm.errorMsg} </button>;
     } else {
-      return <button type="submit">Log In</button>;
+      return <button className='submit-btn' type="submit">Log In</button>;
     }
   };
 
   return (
     <div className="root-Login">
+      <div id="logo-container-Login">
+        <img src={logo} alt="the RIff logo" id="logo-Login" />
+        <h2 style={{
+          "textAlign": "left",
+          "lineHeight": "0rem",
+          }}
+        > Riff </h2>
+      </div>
       <div className="root-loginForm-Login">
         <form onSubmit={handleLogin} className="loginForm-Login"> {/* Fixed function name */}
-          <h1 className="login-text-Login"> Login </h1>
+          <h1 className="login-text-Login"> 
+            Login to the 
+            <br /> 
+            <span className="riffSpan-Login">Riff</span> 
+            <br />
+            Experience 
+          </h1>
+
           <p className="username-text-Login"> Enter Username </p>
-          <input
+          <input className="user-text"
             type="text"
             name="username"
             value={loginForm.username}
@@ -65,8 +81,9 @@ function Login({ setUser }) {
             required
             autoComplete="off"
           />
+
           <p className="password-text-Login"> Enter Password </p>
-          <input
+          <input className='password-text'
             type="password"
             name="password"
             value={loginForm.password}
@@ -75,8 +92,9 @@ function Login({ setUser }) {
             autoComplete="off"
           />
 
-          {formError()}
-
+          <div className="button-container-Login">
+            {formError()}
+          </div>
           <Link to="/register">
             <p className="link-register-Login"> No account? Register here! </p>
           </Link>
