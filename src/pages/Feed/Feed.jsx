@@ -3,19 +3,21 @@ import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview.jsx";
 import AddPost from "../../components/AddPost/AddPost.jsx";
 import { getPosts } from "../../services/posts.js";
+import {randomInt} from "../../services/helpers.js";
 import { getUserPostsById } from "../../services/users.js";
 import "./Feed.css";
 
 function Feed({user, feedType}) {
   const [posts, setPosts] = useState([]);
-  
+  const [reload, setReload] = useState(false);
+
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
       // get posts by user ID async function
       const getPostsId = async (id) => {
         const data = await getUserPostsById(id);
-        console.log('checkout ur user posts', data)
+        // console.log('checkout ur user posts', data)
         setPosts(data);
       }
 
@@ -29,7 +31,7 @@ function Feed({user, feedType}) {
           
           setPosts(tempArr);
         } else if (feedType === 'user') {
-          console.log('try to get user posts')
+          // console.log('try to get user posts')
           // wait for user
           const userData = await user;
           const dataTemp = await getPostsId(userData);
@@ -39,16 +41,15 @@ function Feed({user, feedType}) {
           // get my likes
         }
 
-        console.log('we got the posts my dude', postsData);
+        console.log('posts succesfully retrieved!', postsData);
         setPosts(postsData);
         
       } catch {
-        console.error('no posts', error);
+        console.log("can't get the posts");
       }
     }
     fetchPosts();
-    console.log('amount of objects in posts array: ', posts);
-  }, [feedType]);
+  }, [feedType, reload]);
   
   return (
     <div id="mainContainer-Feed">
@@ -57,7 +58,16 @@ function Feed({user, feedType}) {
         className={(feedType === 'user') ? "containerUSER-Feed" : null}
       >
         <div id="addPost-Feed">
-          <AddPost user={user} />
+          <AddPost user={user} setReload={setReload} />
+        </div>
+        <div id="header-Feed">
+          {
+            (feedType === 'main') ?
+              <h1> Latest Riff Posts</h1>
+            :
+              <h1> ˚˚ Ur Fav Riff Posters ˚˚</h1>
+
+          }
         </div>
         {
           posts && posts.map((post, idx) => (
@@ -65,10 +75,10 @@ function Feed({user, feedType}) {
               post={post} 
               key={idx}
               user={user}
-              width={`80vw`}
-              height={`10rem`}
-              // width={`${randomInt(20,70)}vw`}
-              // height={`${randomInt(3,10)}rem`}
+              // width={`80vw`}
+              // height={`10rem`}
+              width={`${randomInt(10,60)}vw`}
+              height={`${randomInt(8,20)}rem`}
             />
           
           ))

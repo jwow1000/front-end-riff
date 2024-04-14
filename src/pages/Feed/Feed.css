@@ -3,14 +3,19 @@
 
 }
 
+#header-Feed {
+    width: 100vw;
+    text-align: center;
+}
+
 #previewContainer-Feed {
-    margin: 1rem 2vw 0 18vw;
-    width: 80vw;
+    margin: 0 0 2rem 5vw;
+    width: 90vw;
     display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 3rem;
+    flex-flow: row wrap;
+    /* align-items:flex-start; */
+    /* justify-content: space-around; */
+    gap: 2.5rem;
 }
 
 .containerUSER-Feed {

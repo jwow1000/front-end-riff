@@ -2,12 +2,13 @@
 
 .add-btn-modal {
     padding: 10px 20px;
-    background-color: #e5e5e5;
-    color: rgb(48, 171, 27);
-    border: none;
+    height: 4rem;
+    background-color: #dd710c;
+    color: rgb(0, 0, 0);
+    border: none ;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 1s ease;
   }
   
   .add-btn-modal:hover {
