@@ -52,14 +52,7 @@ useEffect(() => {
   }
 }, [post, postId])
   
-// const fetchMoreComments = async (commentId) => {
-//   try {
-//     const fetchedMoreComments = await getPostComments(commentId)
-//     setComments(comments.map((comment) => commentId ? {...comment, subComments: fetchedMoreComments } : comment))
-//   } catch (error) {
-//     console.error("Error fetching MORE comments:", error)
-//   }
-// }
+
 
 
   if (!post) return <div> Loading... </div>

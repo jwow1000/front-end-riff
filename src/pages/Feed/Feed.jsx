@@ -8,25 +8,18 @@ import { getUserPostsById } from "../../services/users.js";
 import { followsList } from "../../services/follows.js";
 import "./Feed.css";
 
-function Feed({user, follows, feedType}) {
+function Feed({user, follows, feedType, setTrigUser}) {
   const [posts, setPosts] = useState([]);
   const [reload, setReload] = useState(false);
 
   // hook to fetch all posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
-      // // get posts by user ID async function
-      // const getPostsId = async (id) => {
-      //   const data = await getUserPostsById(id);
-      //   console.log('checkout ur user posts', data)
-      //   setPosts(data);
-      // }
 
       try {
         if(feedType === 'main') {
           // get all parent posts
           const postsData = await getPosts();
-          // console.log("This is the post Data in main: ", postsData)
           const tempArr = postsData.filter((post) => {
             return (!post.parent) ? post : null;
           });
@@ -74,8 +67,8 @@ function Feed({user, follows, feedType}) {
               post={post} 
               key={idx}
               user={user}
-              // width={`80vw`}
-              // height={`10rem`}
+              follows={follows}
+              setTrigUser={setTrigUser}
               width={`${randomInt(14,60)}vw`}
               height={`${randomInt(10,20)}rem`}
             />
