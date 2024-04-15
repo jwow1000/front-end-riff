@@ -47,7 +47,10 @@
 
 #title-PostPreview {
     text-align: center;
+    color: black;
     font-size: 2rem;
+    text-shadow: #ffffff 0px 0px 5px;
+    text-shadow: #c0ffd5 0px 0px 2px;
 }
 
 #date-PostPreview {
