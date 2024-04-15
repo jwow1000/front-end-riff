@@ -1,14 +1,12 @@
 .profile-page {
-    flex-grow: 1;
-    display: flex;
-    overflow: hidden;
-    font-family: "Roboto", sans-serif;
-
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
 }
 
 .user-banner {
   overflow-y: hidden;
-  margin: 6rem 0 0 0;  
   position: fixed;
   height: 100vh;
   display: flex;
@@ -22,10 +20,10 @@
   padding: 10px;
 }
 
-.username-banner{
-    margin-top: 6rem;
-    font-size: 60px;
-    font-family: "Roboto", sans-serif;
+.username-banner {
+  margin-top: 6rem;
+  font-size: 60px;
+  font-family: "Roboto", sans-serif;
 }
 
 .large-profile {
@@ -33,48 +31,48 @@
   justify-content: center;
   border: solid 5px #36393b;
   margin-bottom: 3rem;
-  border-radius: 50%; 
+  border-radius: 50%;
   width: 65%;
   aspect-ratio: 1/1;
 }
 
-.form-name{
-    font-size: 40px;
-    margin-top: 0;
+.form-name {
+  font-size: 40px;
+  margin-top: 0;
 }
 
-.profpic-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 75%;
-    gap: 1rem;
-    width: 100%;
-    align-items: end;
+.profpic-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 75%;
+  gap: 1rem;
+  width: 100%;
+  align-items: end;
 }
 
-.pic-label{
-    font-size: 23px;
-    display: flex;
-    width: 100%;
-    height: 20%;
-    justify-content: space-evenly;
-    align-items: center;
+.pic-label {
+  font-size: 23px;
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.pic-input{
-    width: 75%;
-    height: 100%;
-    border-radius: 5rem;
-    border: 2px solid #74FBB8;
-    margin: 5px;
-    font-size: 15px;
+.pic-input {
+  width: 75%;
+  height: 100%;
+  border-radius: 5rem;
+  border: 2px solid #74fbb8;
+  margin: 5px;
+  font-size: 15px;
 }
 
-.submit-button{
-  background-color: #74FBB8;
+.submit-button {
+  background-color: #74fbb8;
   border-radius: 100px;
-  color: #36393B;
+  color: #36393b;
   cursor: pointer;
   display: inline-block;
   font-family: "Roboto", sans-serif;
@@ -89,15 +87,15 @@
 }
 
 .submit-button:hover {
-  box-shadow: 0px 0px 25px 5px rgba(45,255,196,0.9);
+  box-shadow: 0px 0px 25px 5px rgba(45, 255, 196, 0.9);
 }
 
-
 .profile-feed {
-  left: 20%;
+  /* position: fixed; */
+  margin: 0 0 0 40vw;
+  overflow-y: hidden;
   flex-grow: 1;
-  width: 60%;
-  position: relative;
+  width: 60vw;
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -107,5 +105,5 @@
 }
 
 #background-PostPreview {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }

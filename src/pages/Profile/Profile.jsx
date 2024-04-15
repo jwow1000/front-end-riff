@@ -59,7 +59,7 @@ function Profile({ user }) {
               post={posts} 
               user={user}
               key={idx}
-              width={`50%`}
+              width={`80%`}
               height={`25rem`}/>
           ))
         }

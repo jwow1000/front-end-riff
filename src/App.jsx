@@ -39,7 +39,7 @@ function App() {
 
     fetchUser();
   }, [trigUser]);
-
+  
   
   return (
     <div id="full-page">

@@ -1,6 +1,6 @@
 .comments-btn-SubComment button{
- background-image: url("../../assets/comment.png");
- background-size: cover;
+    background-image: url("../../assets/comment.png");
+    background-size: cover;
     border: none;
     background-color: transparent;
     width: 73px;
