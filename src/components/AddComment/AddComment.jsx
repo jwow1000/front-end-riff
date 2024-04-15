@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { createPost } from "../../services/posts.js";
 import "./AddComment.css";
 
-function AddComment({ parentId, imgUrl }) {
+function AddComment({ parentId, imgUrl, setReload }) {
   const [modal, setModal] = useState(false);
   const [comment, setComment] = useState({
     title: "",
@@ -58,11 +58,14 @@ function AddComment({ parentId, imgUrl }) {
       const response = await createPost(comment);
       if (response.status === 201) {
         console.log("Comment added successfully");
+        setReload((prev) => !prev);
         toggleModal();
-        location.reload();
+        // location.reload();
       } else {
         console.log("Comment FAILED successfully");
-        location.reload();
+        setReload((prev) => !prev);
+        toggleModal();
+        // location.reload();
       }
     } catch (error) {
       console.error("Failed to submit comment:", error);

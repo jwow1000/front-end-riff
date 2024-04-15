@@ -12,6 +12,7 @@ function Thread() {
   // const [toggle, setToggle] = useState(false)
   const [post, setPost] = useState([])
   const [comments, setComments] = useState([])
+  const [reload, setReload] = useState(false);
 
   
 // I need to pull the post that was clicked in Feed.
@@ -32,7 +33,7 @@ useEffect(() => {
   }
   
   fetchPost()
-}, [postId])
+}, [postId,reload])
 
 useEffect(() => {
   const fetchComments = async () => {
@@ -70,7 +71,7 @@ useEffect(() => {
           <h3 id="scroll-text" className="post-description-Thread">{post.text_body}</h3>
         </div>
         <div className="AddComment-Thread">
-          <AddComment imgUrl={post.image} parentId={post.id} />
+          <AddComment imgUrl={post.image} parentId={post.id} setReload={setReload} />
         </div>
       </div>  
       <div className="root-comment-Thread">
