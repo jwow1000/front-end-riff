@@ -4,7 +4,7 @@ import AddComment from "../AddComment/AddComment";
 import "./SubComment.css"
 
 
-function SubComment({comment}) {
+function SubComment({comment, setReload}) {
    
     async function getChildComments() {
         console.log('FETCHING CHILD COMMEEEEEEEEEENTS')
@@ -26,7 +26,7 @@ function SubComment({comment}) {
         <div>
           <img src={comment.image} />
         </div>
-          <AddComment imgUrl={comment.image} parentId={comment.id} />
+          <AddComment imgUrl={comment.image} parentId={comment.id} setReload={setReload}/>
         <div id="scroll-container">
           <h3 id="scroll-text" className="post-description-Thread">{comment.text_body}</h3>
         </div>
