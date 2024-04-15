@@ -10,33 +10,33 @@ import './PostPreview.css';
 function PostPreview( {post, width, height, user, follows, setTrigUser} ) {
   const navigate = useNavigate();
 
-
   const [postUser, setPostUser] = useState({});
   const [like, setLike] = useState(false);
   const [following, setFollowing] = useState(false);
-
+  
   // get post data and user data nested
   useEffect(() => {
     
-   
+    
     const getPostAndUser = async () => {
-
+      
       const tempData = await getProfile(post.author);
       setPostUser(tempData);
       console.log (follows)
       const checkFollow = follows?.some(follow => {
         return follow?.isFollowing === tempData?.id
       })
-
+      
       setFollowing(checkFollow);     
-
+      
     }
-
+    
     getPostAndUser();
     
     
   }, [post, follows]);
   // check for follows
+  console.log('what does user look like', postUser);
   
   const handleClick = () => {
     navigate(`/thread/${post.id}`);
@@ -81,13 +81,19 @@ function PostPreview( {post, width, height, user, follows, setTrigUser} ) {
             </div>
           </NavLink>
 
-          
-          <FollowButton 
-            userId={postUser?.user}
-            postId={(post.id) ? post.id : null} 
-            state={following} 
-            setTrigUser={setTrigUser}
-            width={'5rem'}/>
+          {
+
+            (user.user_obj?.id !== postUser.user) ?
+              <FollowButton 
+                userId={postUser?.user}
+                postId={(post.id) ? post.id : null} 
+                state={following} 
+                setTrigUser={setTrigUser}
+                width={'5rem'}
+              />
+            :
+              null
+          }
         </div>
         
         <div 

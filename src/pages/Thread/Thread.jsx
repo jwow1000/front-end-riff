@@ -3,9 +3,9 @@ import { getPost } from "../../services/posts.js"
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom'
-import './Thread.css';
 import AddComment from "../../components/AddComment/AddComment.jsx"
 import SubComment from "../../components/SubComment/SubComment.jsx"
+import './Thread.css';
 
 function Thread() {
   const { id: postId } = useParams()
@@ -64,7 +64,7 @@ useEffect(() => {
           <p className="post-title-Thread">{post.title}</p>
         </div>
         <div className="img-container-Thread">
-          <img src={post.image} alt="...Loading Post"/>
+          <img id="img-Thread"src={post.image} alt="...Loading Post"/>
         </div>
         <div id="scroll-container">
           <h3 id="scroll-text" className="post-description-Thread">{post.text_body}</h3>
