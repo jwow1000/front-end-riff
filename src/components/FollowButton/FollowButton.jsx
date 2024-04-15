@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "./FollowButton.css";
 
 
-function FollowButton({state, width, userId, postId}) {
+function FollowButton({state, width, userId, postId, setTrigUser}) {
   // define state for follow status
   const [follow, setFollow] = useState(state);
   
@@ -19,9 +19,11 @@ function FollowButton({state, width, userId, postId}) {
     if(follow) {
       removeFollower(userId);
       setFollow(false);
+      setTrigUser(prev => !prev)
     } else {
       addFollower(userId);
       setFollow(true);
+      setTrigUser(prev => !prev)
     }
   };
   

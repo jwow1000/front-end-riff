@@ -6,18 +6,6 @@ import "./Profile.css";
 
 function Profile({ user }) {
   const [profilePic, setProfilePic] = useState(user?.profile_obj?.profilePic);
-  // const [thisUser, setThisUser] = useState({});
-
-  //logic for profile banner
-  // useEffect(() => {
-  //   const getUserData = async () => {
-  //     const us = await user;
-  //     setThisUser(us);
-  //     const profile = await getProfile(us.user_obj.id);
-  //     setProfile(profile);
-  //   };
-  //   getUserData();
-  // }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
