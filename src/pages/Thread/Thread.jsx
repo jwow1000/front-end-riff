@@ -77,7 +77,7 @@ useEffect(() => {
       <div className="root-comment-Thread">
         <div id="root-scroll-container">
           {comments?.map((comment) => (
-            <SubComment comment={comment} />
+            <SubComment comment={comment} setReload={setReload}/>
           ))}
         </div>
       </div>
