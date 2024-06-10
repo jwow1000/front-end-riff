@@ -1,0 +1,31 @@
+#mainContainer-Feed {
+    position: relative;
+    
+
+}
+
+#header-Feed {
+    width: 100vw;
+    text-align: center;
+}
+
+#previewContainer-Feed {
+    margin: 6rem 0 2rem 5vw;
+    padding: 1rem 0 0 0;
+    width: 90vw;
+    display: flex;
+    flex-flow: row wrap;
+    /* align-items:flex-start; */
+    /* justify-content: space-around; */
+    gap: 2.5rem;
+}
+
+.containerUSER-Feed {
+    width: 60vw;
+}
+
+#addPost-Feed {
+    position: absolute;
+    left: 1rem; 
+    top: 0.5rem;
+    }

@@ -1,10 +1,14 @@
 #mainContainer-NavBar {
     background-color: #F9F0DC;
-    width: 100vw;
-    height: 10rem;
+    display: flex;
+    justify-content: space-between;
+    /* position: fixed;
+    width: 100%; */
 }
 
+
 .link-NavBar {
+    font-size: 1.5rem;
     color: black;
 }
 
@@ -14,4 +18,42 @@
 
 .active-Link-NavBar {
     color: #75E3AC;
+}
+
+#profPic-container-NavBar {
+    margin: 0.5rem 0 1rem 2rem;
+    height: 5rem;
+    width: 5rem;    
+    border-radius: 50%; 
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+#linkContainer-NavBar {
+    width: 75vw;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+#logoNavContainer-NavBar {
+    position: relative;
+    height: 6rem;   
+}
+
+#logo-img-NavBar {
+    height: 4rem;
+    padding: 0.5rem;
+    object-fit: contain;
+}
+
+#logoName-NavBar {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    font-style: oblique;
+    display: block;
+    margin: 0 0 0 0.5rem;
+    color: black;
+    
 }
